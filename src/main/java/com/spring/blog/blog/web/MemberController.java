@@ -7,6 +7,7 @@ import net.coobird.thumbnailator.ThumbnailParameter;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 import net.coobird.thumbnailator.name.Rename;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,17 +26,18 @@ public class MemberController {
     MemberService memberService;
     ServletContext sc;
 
+    @Autowired
     public MemberController(MemberService memberService, ServletContext sc) {
         this.memberService = memberService;
         this.sc = sc;
     }
 
-    @GetMapping("form")
+    @GetMapping("/members/add")
     public void form() throws Exception {
 
     }
 
-    @PostMapping("add")
+    @PostMapping("members/add")
     public String add(Member m, Part photoFile) throws Exception {
         memberService.add(m);
         return "redirect:list";
@@ -43,8 +45,8 @@ public class MemberController {
     }
 
 
-    @GetMapping("list")
-    public void list( Model model) throws Exception {
+    @GetMapping("/members/list")
+    public void list(Model model) throws Exception {
         List<Member> list = memberService.list();
         model.addAttribute("list", list);
     }
