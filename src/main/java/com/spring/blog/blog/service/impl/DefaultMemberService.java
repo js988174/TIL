@@ -15,6 +15,7 @@ public class DefaultMemberService implements MemberService {
         this.memberDao = memberDao;
     }
 
+
     @Override
     public int add(Member member) throws Exception {
         return memberDao.insert(member);
@@ -22,7 +23,7 @@ public class DefaultMemberService implements MemberService {
 
     @Override
     public List<Member> list(String keyword) throws Exception {
-        return memberDao.findByKeyword(keyword);
+        return memberDao.AllList(keyword);
     }
 
 }

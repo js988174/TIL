@@ -7,7 +7,7 @@ import java.util.List;
 public interface MemberDao {
     int insert(Member member) throws Exception;
 
-    List<Member> AllList() throws Exception;
+    List<Member> AllList(String keyword) throws Exception;
 
 
 }

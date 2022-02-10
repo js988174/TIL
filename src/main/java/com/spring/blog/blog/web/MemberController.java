@@ -37,38 +37,6 @@ public class MemberController {
 
     @PostMapping("add")
     public String add(Member m, Part photoFile) throws Exception {
-        String uploadDir = sc.getRealPath("/upload");
-
-        if (photoFile.getSize() > 0) {
-            String filename = UUID.randomUUID().toString();
-            photoFile.write(uploadDir + "/" + filename);
-            m.setPicture(filename);
-
-            Thumbnails.of(uploadDir + "/" + filename)
-                    .size(30, 30)
-                    .outputFormat("jpg")
-                    .crop(Positions.CENTER)
-                    .toFiles(new Rename() {
-
-                        @Override
-                        public String apply(String name, ThumbnailParameter param) {
-                            return name + "_30x30";
-                        }
-                    });
-
-            Thumbnails.of(uploadDir + "/" + filename)
-                    .size(110, 110)
-                    .outputFormat("jpg")
-                    .crop(Positions.CENTER)
-                    .toFiles(new Rename() {
-
-                        @Override
-                        public String apply(String name, ThumbnailParameter param) {
-                            return name + "_110x110";
-                        }
-                    });
-        }
-
         memberService.add(m);
         return "redirect:list";
 
