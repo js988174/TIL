@@ -1,7 +1,8 @@
 package com.spring.blog.blog.web;
 
-import board.boardspring.domain.Member;
-import board.boardspring.service.MemberService;
+
+import com.spring.blog.blog.domain.Member;
+import com.spring.blog.blog.service.MemberService;
 import net.coobird.thumbnailator.ThumbnailParameter;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
@@ -73,23 +74,6 @@ public class MemberController {
 
     }
 
-    @GetMapping("delete")
-    public String delete(int no) throws Exception {
-        Member member = memberService.get(no);
-        if (member == null) {
-            throw new Exception("해당 번호의 회원이 없습니다.");
-        }
-
-        memberService.delete(no);
-
-        return "redirect:list";
-    }
-
-    @GetMapping("detail")
-    public void detail(int no, Model model) throws Exception {
-        Member m = memberService.get(no);
-        model.addAttribute("member", m);
-    }
 
     @GetMapping("list")
     public void list(String keyword, Model model) throws Exception {
@@ -97,31 +81,5 @@ public class MemberController {
         model.addAttribute("list", list);
     }
 
-    @PostMapping("update")
-    public String update(Member m, Part photoFile) throws Exception {
 
-        String uploadDir = sc.getRealPath("/upload");
-        if (photoFile.getSize() > 0) {
-            String filename = UUID.randomUUID().toString();
-            photoFile.write(uploadDir + "/" + filename);
-            m.setPicture(filename);
-
-            Thumbnails.of(uploadDir + "/" + filename)
-                    .size(110, 110)
-                    .outputFormat("jpg")
-                    .crop(Positions.CENTER)
-                    .toFiles(new Rename() {
-
-                        @Override
-                        public String apply(String name, ThumbnailParameter param) {
-                            return name + "_110x110";
-                        }
-                    });
-        }
-
-        if (memberService.update(m) == 0) {
-            throw new Exception("해당 번호의 회원이 없습니다.");
-        }
-        return "redirect:list";
-    }
 }
