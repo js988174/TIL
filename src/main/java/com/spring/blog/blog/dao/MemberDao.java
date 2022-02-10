@@ -2,6 +2,7 @@ package com.spring.blog.blog.dao;
 
 
 import com.spring.blog.blog.domain.Member;
+import com.spring.blog.blog.domain.Member;
 
 import java.util.List;
 
