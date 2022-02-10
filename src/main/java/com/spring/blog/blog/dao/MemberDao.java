@@ -10,4 +10,5 @@ public interface MemberDao {
     List<Member> AllList(String keyword) throws Exception;
 
 
+    List<Member> AllList();
 }
