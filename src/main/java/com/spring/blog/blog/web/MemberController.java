@@ -44,8 +44,8 @@ public class MemberController {
 
 
     @GetMapping("list")
-    public void list(String keyword, Model model) throws Exception {
-        List<Member> list = memberService.list(keyword);
+    public void list(Model model) throws Exception {
+        List<Member> list = memberService.list();
         model.addAttribute("list", list);
     }
 
