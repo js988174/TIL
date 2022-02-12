@@ -42,7 +42,7 @@ public class MemberController {
     public String list(Model model) throws Exception {
         List<Member> list = memberService.list();
         model.addAttribute("list", list);
-        return "member/memberList";
+        return "member/list";
     }
 
 
