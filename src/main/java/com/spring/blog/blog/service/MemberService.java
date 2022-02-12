@@ -3,7 +3,9 @@ package com.spring.blog.blog.service;
 
 import com.spring.blog.blog.domain.Member;
 
+
 import java.util.List;
+
 
 public interface MemberService {
 
