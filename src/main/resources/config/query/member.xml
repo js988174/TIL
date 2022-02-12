@@ -9,7 +9,7 @@
         <result column="name" property="name" />
     </resultMap>
 
-    <select id="insert" resultMap="memberMap">
+    <select id="AllList" resultMap="memberMap">
         select  *
         from member
     </select>
