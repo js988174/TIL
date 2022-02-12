@@ -1,4 +1,4 @@
-package com.spring.blog.blog.domain;
+package com.spring.blog.domain;
 
 public class Member {
     private int no;

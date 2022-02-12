@@ -1,7 +1,7 @@
-package com.spring.blog.blog.service;
+package com.spring.blog.service;
 
 
-import com.spring.blog.blog.domain.Member;
+import com.spring.blog.domain.Member;
 
 import java.util.List;
 

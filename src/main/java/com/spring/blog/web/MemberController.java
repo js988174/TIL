@@ -1,8 +1,7 @@
-package com.spring.blog.blog.web;
+package com.spring.blog.web;
 
-
-import com.spring.blog.blog.domain.Member;
-import com.spring.blog.blog.service.MemberService;
+import com.spring.blog.domain.Member;
+import com.spring.blog.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +23,7 @@ public class MemberController {
     public MemberController(MemberService memberService, ServletContext sc) {
         this.memberService = memberService;
         this.sc = sc;
+        System.out.println("g2");
     }
 
     @GetMapping("/add")
@@ -41,6 +41,7 @@ public class MemberController {
     @GetMapping("/list")
     public String list(Model model) throws Exception {
         List<Member> list = memberService.list();
+        System.out.println("g2");
         model.addAttribute("list", list);
         return "member/list";
     }
