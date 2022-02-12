@@ -14,7 +14,7 @@ import javax.servlet.ServletContext;
 @Controller
 @RequestMapping("/member/")
 public class MemberController {
-
+    @Autowired
     MemberService memberService;
     ServletContext sc;
 
