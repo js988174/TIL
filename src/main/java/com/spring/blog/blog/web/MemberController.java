@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/member/")
+@RequestMapping("/member")
 public class MemberController {
 
     MemberService memberService;
@@ -81,6 +81,7 @@ public class MemberController {
             throw new Exception("해당 번호의 회원이 없습니다.");
         }
 
+<<<<<<< Updated upstream
         memberService.delete(no);
 
         return "redirect:list";
@@ -95,7 +96,13 @@ public class MemberController {
     @GetMapping("list")
     public void list(String keyword, Model model) throws Exception {
         List<Member> list = memberService.list(keyword);
+=======
+    @GetMapping("list")
+    public String list(Model model) throws Exception {
+        List<Member> list = memberService.list();
+>>>>>>> Stashed changes
         model.addAttribute("list", list);
+        return "list.html";
     }
 
     @PostMapping("update")
