@@ -4,6 +4,7 @@ package com.spring.site.dao;
 
 import com.spring.site.domain.Member;
 import org.apache.ibatis.annotations.Mapper;
+import org.mybatis.spring.annotation.MapperScan;
 
 import java.util.List;
 

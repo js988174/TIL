@@ -21,9 +21,8 @@ public class MemberController {
     ServletContext sc;
 
     @Autowired
-    public MemberController(MemberService memberService, ServletContext sc) {
-        this.memberService = memberService;
-        this.sc = sc;
+    public MemberController() {
+
         System.out.println("g2");
     }
 
