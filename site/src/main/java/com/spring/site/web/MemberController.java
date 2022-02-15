@@ -23,7 +23,6 @@ public class MemberController {
     @Autowired
     public MemberController() {
 
-        System.out.println("g2");
     }
 
     @GetMapping("/add")
