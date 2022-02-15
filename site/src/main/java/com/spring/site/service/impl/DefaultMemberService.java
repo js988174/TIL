@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class DefaultMemberService implements MemberService {
-
+    @Autowired
     MemberDao memberDao;
 
     @Override
@@ -21,6 +21,7 @@ public class DefaultMemberService implements MemberService {
 
     @Override
     public List<Member> list() throws Exception {
+        System.out.println(memberDao.AllList().get(0).getName());
         return memberDao.AllList();
     }
 
