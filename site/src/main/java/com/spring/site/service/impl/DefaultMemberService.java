@@ -12,13 +12,7 @@ import java.util.List;
 @Service
 public class DefaultMemberService implements MemberService {
 
-
     MemberDao memberDao;
-
-    public DefaultMemberService() {
-
-    }
-
 
     @Override
     public int add(Member member) throws Exception {

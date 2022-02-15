@@ -16,12 +16,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
+
     @Autowired
     MemberService memberService;
     ServletContext sc;
 
-    @Autowired
-    public MemberController() {
+    public MemberController(MemberService memberService) {
 
     }
 

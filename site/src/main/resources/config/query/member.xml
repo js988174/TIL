@@ -9,6 +9,10 @@
         <result column="name" property="name" />
     </resultMap>
 
+    <select id="insert" parameterType="Member">
+        INSERT INTO site.new_table (id, pw, name) VALUES ({id}, {pw}, {name});
+    </select>
+
     <select id="AllList" resultMap="memberMap">
         select  *
         from member
