@@ -19,6 +19,7 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
+
     ServletContext sc;
 
     public MemberController(MemberService memberService) {

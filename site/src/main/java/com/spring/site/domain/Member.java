@@ -1,5 +1,6 @@
 package com.spring.site.domain;
 
+
 public class Member {
     private int no;
     private String id;
