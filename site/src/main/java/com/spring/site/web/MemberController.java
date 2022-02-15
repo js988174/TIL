@@ -1,7 +1,6 @@
 package com.spring.site.web;
 
 
-import com.spring.site.dao.MemberDao;
 import com.spring.site.domain.Member;
 import com.spring.site.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +19,9 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
+
     @Autowired
     ServletContext sc;
-
 
     public MemberController(MemberService memberService) {
 
@@ -33,16 +32,18 @@ public class MemberController {
         return "member/createMemberForm";
     }
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public String add(Member m) throws Exception {
-        memberService.add(m);
-        return "redirect:/";
+        Member member = new Member();
+        member.setName(m.getName());
+        memberService.add(member);
+        System.out.println("name : >>> " + member.getName());
+        return "member/memberList";
     }
 
     @GetMapping("/list")
     public String list(Model model) throws Exception {
         List<Member> list = memberService.list();
-        System.out.println("g2");
         model.addAttribute("list", list);
         return "member/memberList";
     }
