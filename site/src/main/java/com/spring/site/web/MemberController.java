@@ -1,6 +1,7 @@
 package com.spring.site.web;
 
 
+import com.spring.site.dao.MemberDao;
 import com.spring.site.domain.Member;
 import com.spring.site.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,9 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
+    @Autowired
     ServletContext sc;
+
 
     public MemberController(MemberService memberService) {
 
@@ -41,7 +44,7 @@ public class MemberController {
         List<Member> list = memberService.list();
         System.out.println("g2");
         model.addAttribute("list", list);
-        return "member/memberList";
+        return "member/list";
     }
 
 
