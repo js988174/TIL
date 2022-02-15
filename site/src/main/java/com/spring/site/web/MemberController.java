@@ -44,7 +44,7 @@ public class MemberController {
         List<Member> list = memberService.list();
         System.out.println("g2");
         model.addAttribute("list", list);
-        return "member/list";
+        return "member/memberList";
     }
 
 
