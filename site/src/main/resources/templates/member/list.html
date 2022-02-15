@@ -5,6 +5,8 @@
     <title>회원가입</title>
 </head>
 <body>
-    <h1 th:text="${List}">Name</h1>
+<tr th:each="member : ${member}">
+    <td th:text="${member.id}"></td>
+    <td th:text="${member.name}"></td>
 </body>
 </html>
