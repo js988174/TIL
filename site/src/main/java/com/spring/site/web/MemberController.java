@@ -36,9 +36,11 @@ public class MemberController {
     public String add(Member m) throws Exception {
         Member member = new Member();
         member.setName(m.getName());
+        member.setId(m.getId());
+        member.setPw(m.getPw());
         memberService.add(member);
-        System.out.println("name : >>> " + member.getName());
-        return "member/memberList";
+        System.out.println(member.toString());
+        return "redirect:/member/list";
     }
 
     @GetMapping("/list")
