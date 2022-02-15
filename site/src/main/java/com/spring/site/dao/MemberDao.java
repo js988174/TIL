@@ -14,7 +14,7 @@ import java.util.List;
 
 @Mapper
 public interface MemberDao {
-    @Insert("INSERT INTO member(id, pw, name) VALUES(#{id}, #{pw}, #{name}")
+    @Insert("INSERT INTO member(id, pw, name) VALUES(#{id}, #{pw}, #{name})")
     @Options(useGeneratedKeys = true, keyProperty = "no")
     int insert(Member member) throws Exception;
     @Select("SELECT * FROM member")
