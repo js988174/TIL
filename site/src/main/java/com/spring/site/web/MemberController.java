@@ -50,5 +50,11 @@ public class MemberController {
         return "member/memberList";
     }
 
+    @PostMapping("/login")
+    public String login(Member member) throws Exception {
+
+        return "login";
+    }
+
 
 }
