@@ -4,6 +4,7 @@ package com.spring.site.web;
 import com.spring.site.domain.Member;
 import com.spring.site.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,8 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Autowired
     ServletContext sc;
 
@@ -40,6 +42,7 @@ public class MemberController {
         member.setPw(m.getPw());
         memberService.add(member);
         System.out.println(member.toString());
+
         return "redirect:/member/list";
     }
 
@@ -48,6 +51,14 @@ public class MemberController {
         List<Member> list = memberService.list();
         model.addAttribute("list", list);
         return "member/memberList";
+    }
+
+    @PostMapping("/login")
+    public String login(Member member) throws Exception {
+        System.out.println("member.getPw() ==== " + member.getPw());
+        System.out.println("passwordEncoder.encode(member.getPw()) === " + passwordEncoder.encode(member.getPw()));
+        member.setPw(passwordEncoder.encode(member.getPw()));
+        return "login";
     }
 
 

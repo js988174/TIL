@@ -16,7 +16,7 @@ public class MyBatisConfig {
     public SqlSessionFactory sqlSessionFactory(DataSource datasource) throws Exception{
         SqlSessionFactoryBean sqlSessionFactory=new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(datasource);
-        sqlSessionFactory.setTypeAliasesPackage("com.spring.site.dao");
+        sqlSessionFactory.setTypeAliasesPackage("com.spring.site.mapper");
         return sqlSessionFactory.getObject();
     }
 
