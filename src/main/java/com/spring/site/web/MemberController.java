@@ -7,12 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletContext;
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/member")
@@ -30,18 +36,23 @@ public class MemberController {
     }
 
     @GetMapping("/add")
-    public String form()  {
+    public String form(Model model)  {
+        model.addAttribute("member", new Member());
         return "member/createMemberForm";
     }
 
     @PostMapping("/add")
-    public String add(Member m) throws Exception {
-        Member member = new Member();
-        member.setName(m.getName());
-        member.setId(m.getId());
-        member.setPw(m.getPw());
-        memberService.add(member);
-        System.out.println(member.toString());
+    public String add(@Valid Member member, BindingResult bindingResult) throws Exception {
+        if (bindingResult.hasErrors()) {
+            return "member/createMemberForm";
+        }
+
+        Member m = new Member();
+        m.setId(member.getId());
+        m.setPw(member.getPw());
+        m.setName(member.getName());
+
+        memberService.add(m);
 
         return "redirect:/member/list";
     }
@@ -60,6 +71,5 @@ public class MemberController {
         member.setPw(passwordEncoder.encode(member.getPw()));
         return "login";
     }
-
 
 }
