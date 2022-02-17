@@ -13,6 +13,7 @@ import org.springframework.validation.FieldError;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -29,7 +30,6 @@ public class MemberServiceImpl implements MemberService {
         System.out.println(memberMapper.AllList().get(0).getName());
         return memberMapper.AllList();
     }
-
 
 
 }

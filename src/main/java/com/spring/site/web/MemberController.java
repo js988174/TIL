@@ -64,12 +64,12 @@ public class MemberController {
         return "member/memberList";
     }
 
-    @PostMapping("/login")
-    public String login(Member member) throws Exception {
-        System.out.println("member.getPw() ==== " + member.getPw());
-        System.out.println("passwordEncoder.encode(member.getPw()) === " + passwordEncoder.encode(member.getPw()));
-        member.setPw(passwordEncoder.encode(member.getPw()));
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String login(Member member) throws Exception {
+//        System.out.println("member.getPw() ==== " + member.getPw());
+//        System.out.println("passwordEncoder.encode(member.getPw()) === " + passwordEncoder.encode(member.getPw()));
+//
+//        return "login";
+//    }
 
 }
