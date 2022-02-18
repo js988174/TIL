@@ -31,9 +31,18 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public List<Member> list() throws Exception {
-        System.out.println(memberMapper.AllList().get(0).getName());
-        return memberMapper.AllList();
+        System.out.println(memberMapper.allList().get(0).getName());
+        return memberMapper.allList();
     }
 
-
+    @Override
+    public boolean oneSelect(Member member) throws Exception {
+        boolean b = false;
+        member.setPw(passwordEncoder.encode(member.getPw()));
+        if(memberMapper.selectOne(member).getPw().equals(member.getPw())){
+            b = true;
+            return b;
+        }
+        return b ;
+    }
 }
