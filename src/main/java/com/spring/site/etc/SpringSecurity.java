@@ -17,8 +17,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .cors().disable()
                 .headers().frameOptions().disable()
                 .and()
-                .formLogin()
-                .loginPage("/login");
+                .formLogin();
     }
 
     @Bean

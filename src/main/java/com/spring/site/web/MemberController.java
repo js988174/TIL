@@ -46,10 +46,10 @@ public class MemberController {
         if (bindingResult.hasErrors()) {
             return "member/createMemberForm";
         }
-
         Member m = new Member();
         m.setId(member.getId());
         m.setPw(member.getPw());
+        passwordEncoder.encode(member.getPw());
         m.setName(member.getName());
 
         memberService.add(m);
@@ -64,12 +64,12 @@ public class MemberController {
         return "member/memberList";
     }
 
-//    @GetMapping("/login")
-//    public String login(Member member) throws Exception {
-//        System.out.println("member.getPw() ==== " + member.getPw());
-//        System.out.println("passwordEncoder.encode(member.getPw()) === " + passwordEncoder.encode(member.getPw()));
-//
-//        return "login";
-//    }
+    @GetMapping("/login")
+    public String login(Member member) throws Exception {
+        System.out.println("member.getPw() ==== " + member.getPw());
+        System.out.println("passwordEncoder.encode(member.getPw()) === " + passwordEncoder.encode(member.getPw()));
+
+        return "login";
+    }
 
 }
