@@ -6,6 +6,7 @@ import com.spring.site.domain.Member;
 import com.spring.site.mapper.MemberMapper;
 import com.spring.site.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -19,9 +20,12 @@ import java.util.Optional;
 public class MemberServiceImpl implements MemberService {
     @Autowired
     MemberMapper memberMapper;
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Override
     public int add(Member member) throws Exception {
+        System.out.println("서비스 임플리먼트 에드");
+        member.setPw(passwordEncoder.encode(member.getPw()));
         return memberMapper.insert(member);
     }
 

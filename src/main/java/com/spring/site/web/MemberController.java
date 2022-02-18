@@ -26,8 +26,7 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+
     @Autowired
     ServletContext sc;
 
