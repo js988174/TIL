@@ -63,7 +63,7 @@ public class MemberController {
         return "member/memberList";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/loginCheck")
     public String login(Member member) throws Exception {
         System.out.println("로그인"+member);
         if(memberService.oneSelect(member))
