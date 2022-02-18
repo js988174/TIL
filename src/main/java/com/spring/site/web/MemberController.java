@@ -49,7 +49,7 @@ public class MemberController {
 
         Member m = new Member();
         m.setId(member.getId());
-        m.setPw(member.getPw());
+        m.setPw(passwordEncoder.encode(member.getPw()));
         m.setName(member.getName());
 
         memberService.add(m);
