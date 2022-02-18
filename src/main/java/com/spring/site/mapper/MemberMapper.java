@@ -17,5 +17,7 @@ public interface MemberMapper {
     @Insert("INSERT INTO  member(id, pw, name) VALUES(#{id}, #{pw},#{name})")
     int insert(Member member) throws Exception;
     @Select("SELECT * FROM member")
-    List<Member> AllList() throws Exception;
+    List<Member> allList() throws Exception;
+    @Select("SELECT * FROM member where id = #{id}")
+    Member selectOne(Member member) throws Exception;
 }

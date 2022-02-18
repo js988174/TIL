@@ -24,16 +24,25 @@ public class MemberServiceImpl implements MemberService {
     private PasswordEncoder passwordEncoder;
     @Override
     public int add(Member member) throws Exception {
-        System.out.println("서비스 임플리먼트 에드");
+        System.out.println("서비스 임플리먼트 에드" + passwordEncoder.encode(member.getPw()).length());
         member.setPw(passwordEncoder.encode(member.getPw()));
         return memberMapper.insert(member);
     }
 
     @Override
     public List<Member> list() throws Exception {
-        System.out.println(memberMapper.AllList().get(0).getName());
-        return memberMapper.AllList();
+        System.out.println(memberMapper.allList().get(0).getName());
+        return memberMapper.allList();
     }
 
-
+    @Override
+    public boolean oneSelect(Member member) throws Exception {
+        boolean b = false;
+        member.setPw(passwordEncoder.encode(member.getPw()));
+        if(memberMapper.selectOne(member).getPw().equals(member.getPw())){
+            b = true;
+            return b;
+        }
+        return b ;
+    }
 }
