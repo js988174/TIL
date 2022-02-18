@@ -50,7 +50,7 @@ public class MemberController {
         m.setId(member.getId());
         m.setPw((member.getPw()));
         m.setName(member.getName());
-
+        System.out.println("add");
         memberService.add(m);
 
         return "redirect:/member/list";
