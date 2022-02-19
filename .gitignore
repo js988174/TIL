@@ -1,44 +1,14 @@
-HELP.md
-.gradle
-application-oauth.properties
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+# Created by https://www.toptal.com/developers/gitignore/api/eclipse,java
+# Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
 
-### STS ###
-.apt_generated
+mybatis-config.xml
+log4j.xml
+
+lecture
+target
+pom.properties
 .classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
-.vscode/
-
-# Created by https://www.gitignore.io/api/git,java,maven,windows,eclipse
-# Edit at https://www.gitignore.io/?templates=git,java,maven,windows,eclipse
+MANIFEST.MF
 
 ### Eclipse ###
 .metadata
@@ -52,10 +22,6 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-.target/
-
-# ignore properties file
-config.properties
 
 # External tool builders
 .externalToolBuilders/
@@ -95,38 +61,26 @@ config.properties
 
 # Annotation Processing
 .apt_generated/
+.apt_generated_test/
 
 # Scala IDE specific (Scala & Java development for Eclipse)
 .cache-main
 .scala_dependencies
 .worksheet
 
+# Uncomment this line if you wish to ignore the project description file.
+# Typically, this file would be tracked if it contains build/dependency configurations:
+#.project
+
 ### Eclipse Patch ###
+# Spring Boot Tooling
+.sts4-cache/
+
 # Eclipse Core
 .project
 
-# JDT-specific (Eclipse Java Development Tools)
+# IDT-specific (Eclipse Java Development Tools)
 .classpath
-
-# Annotation Processing
-.apt_generated
-
-.sts4-cache/
-
-### Git ###
-# Created by git for backups. To disable backups in Git:
-# $ git config --global mergetool.keepBackup false
-*.orig
-
-# Created by git when using merge tools for conflicts
-*.BACKUP.*
-*.BASE.*
-*.LOCAL.*
-*.REMOTE.*
-*_BACKUP_*.txt
-*_BASE_*.txt
-*_LOCAL_*.txt
-*_REMOTE_*.txt
 
 ### Java ###
 # Compiled class file
@@ -153,38 +107,4 @@ config.properties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-### Maven ###
-target/
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-.mvn/wrapper/maven-wrapper.jar
-
-### Windows ###
-# Windows thumbnail cache files
-Thumbs.db
-Thumbs.db:encryptable
-ehthumbs.db
-ehthumbs_vista.db
-
-# Dump file
-*.stackdump
-
-# Folder config file
-[Dd]esktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# End of https://www.gitignore.io/api/git,java,maven,windows,eclipse
+# End of https://www.toptal.com/developers/gitignore/api/eclipse,java
