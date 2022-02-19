@@ -7,6 +7,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.sql.SQLOutput;
+
 @EnableWebSecurity
 public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
@@ -18,6 +20,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                 .formLogin();
+        System.out.println("세큐리티 로그 확인");
     }
 
     @Bean

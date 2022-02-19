@@ -8,13 +8,8 @@ import com.spring.site.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -36,13 +31,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public boolean oneSelect(Member member) throws Exception {
-        boolean b = false;
-        member.setPw(passwordEncoder.encode(member.getPw()));
-        if(memberMapper.selectOne(member).getPw().equals(member.getPw())){
-            b = true;
-            return b;
-        }
-        return b ;
+    public Member oneSelect(Member member) throws Exception {
+
+        return member ;
     }
 }
