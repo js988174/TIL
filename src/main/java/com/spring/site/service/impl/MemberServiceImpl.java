@@ -38,6 +38,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public boolean oneSelect(Member member) throws Exception {
         boolean b = false;
+
         member.setPw(passwordEncoder.encode(member.getPw()));
         if(memberMapper.selectOne(member).getPw().equals(member.getPw())){
             b = true;

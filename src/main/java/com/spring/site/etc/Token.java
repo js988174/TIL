@@ -25,7 +25,6 @@ public class Token {
                 .claim("pw", "pw")
                 .signWith(SignatureAlgorithm.HS256, "secret")
                 .compact();
-
     }
 
 }
