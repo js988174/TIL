@@ -26,7 +26,6 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
-
     @Autowired
     ServletContext sc;
 
@@ -66,7 +65,7 @@ public class MemberController {
     @PostMapping("/login")
     public String loginCheck(Member member) throws Exception {
         System.out.println("로그인"+member);
-        if(memberService.oneSelect(member))
+        if(memberService.oneSelect(member)!=null)
             return "home";
         return "login";
     }
