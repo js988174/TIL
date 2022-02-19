@@ -63,12 +63,16 @@ public class MemberController {
         return "member/memberList";
     }
 
-    @PostMapping("/loginCheck")
-    public String login(Member member) throws Exception {
+    @PostMapping("/login")
+    public String loginCheck(Member member) throws Exception {
         System.out.println("로그인"+member);
         if(memberService.oneSelect(member))
             return "home";
         return "login";
     }
-
+    @GetMapping("/login")
+    public String login() throws Exception {
+        System.out.println("로그인 갯맵핑");
+        return "login";
+    }
 }
