@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
@@ -51,6 +53,7 @@ public class MemberController {
         m.setPw((member.getPw()));
         m.setName(member.getName());
         System.out.println("add");
+
         memberService.add(m);
 
         return "redirect:/member/list";
@@ -64,13 +67,22 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String loginCheck(Member member) throws Exception {
+    public String loginCheck(Member member, HttpServletResponse response) throws Exception {
         System.out.println("로그인"+member);
         if(memberService.oneSelect(member)!=null) {
             String token = Token.JwtToken(member.getId());
+            response.setHeader("X-AUTH-TOKEN", token);
+
+            Cookie cookie = new Cookie("X-AUTH-TOKEN", null);
+            cookie.setPath("/");
+            cookie.setHttpOnly(true);
+            cookie.setSecure(true);
+            response.addCookie(cookie);
             System.out.println(token);
+
             return "home";
         }
+
         return "login";
     }
 
