@@ -21,7 +21,7 @@ public class Member {
     @NotBlank(message = "이름을 입력해주세요.")
     @Size(min = 2, max = 8, message = "이름을 2~8자 사이로 입력해주세요.")
     private String name;
-
+    private String role;
     public int getNo() {
         return no;
     }
@@ -48,8 +48,12 @@ public class Member {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String role) {
+        this.role = role;
+    }
+    public String getRole() { return this.role; }
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Member(int no, String id, String pw, String name) {
