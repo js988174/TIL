@@ -2,6 +2,7 @@ package com.spring.site.web;
 
 
 import com.spring.site.domain.Member;
+import com.spring.site.etc.Token;
 import com.spring.site.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -65,8 +66,11 @@ public class MemberController {
     @PostMapping("/login")
     public String loginCheck(Member member) throws Exception {
         System.out.println("로그인"+member);
-        if(memberService.oneSelect(member)!=null)
+        if(memberService.oneSelect(member)!=null) {
+            String token = Token.JwtToken(member.getId());
+            System.out.println(token);
             return "home";
+        }
         return "login";
     }
 

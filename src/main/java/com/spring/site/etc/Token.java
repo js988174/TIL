@@ -12,22 +12,25 @@ import javax.xml.crypto.Data;
 import java.time.Duration;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 
 public class Token {
 
-    private String type = "X-AUTH-TOKEN";
-    private String secretKey = "webfirewood";
+    private String secretKey = "siteKey";
 
     protected void init() {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
     // 토큰 정보
-    public String JwtToken() {
-        Date now = new Date();
+    public static String JwtToken(String member) {
+        Claims claims = Jwts.claims().setSubject(member);
 
-        return type + Jwts.builder()
-                .setHeaderParam(Header.TYPE, Header.JWT_TYPE)
+        claims.put("member", member);
+
+        Date now = new Date();
+        return   Jwts.builder()
+                .setClaims(claims)
                 .setIssuer("token")
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + Duration.ofHours(1).toMillis()))
@@ -37,26 +40,6 @@ public class Token {
                 .compact();
     }
 
-//    // 토큰 조회
-//    public Authentication getAuthentication(String token) {
-//        UserDetails userDetails = MemberMapper.(this.getUserPk(token));
-//        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
-//    }
-
-    // 헤더에서 토큰값 가져오가
-    public String resolveToken(HttpServletRequest request) {
-        return request.getHeader("X-AUTH-TOKEN");
-    }
-
-    // 토큰 유효성 확인
-    public boolean validateToken(String jwtToken) {
-        try {
-            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
-            return !claims.getBody().getExpiration().before(new Date());
-        } catch (Exception e) {
-            return false;
-        }
-    }
 
 
 }
