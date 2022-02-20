@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
@@ -21,21 +23,25 @@ public class LoginController {
     @Autowired
     MemberService memberService;
     @PostMapping("/login")
-    public String loginCheck(Member member) throws Exception {
+    public String loginCheck(Member member, HttpServletResponse response) throws Exception {
         System.out.println("로그인"+member);
         if(memberService.oneSelect(member)!=null) {
             String token = Token.JwtToken(member.getId());
+            response.setHeader("X-AUTH-TOKEN", token);
+
+            Cookie cookie = new Cookie("X-AUTH-TOKEN", null);
+            cookie.setPath("/");
+            cookie.setHttpOnly(true);
+            cookie.setSecure(true);
+            response.addCookie(cookie);
             System.out.println(token);
-            return "/";
+
+            return "home";
         }
+
         return "loginForm";
     }
 
-    @GetMapping("/login")
-    public String login() throws Exception {
-        System.out.println("로그인 갯맵핑");
-        return "loginForm";
-    }
     @GetMapping("/loginForm")
     public String loginForm() throws Exception {
         System.out.println("로그인폼");

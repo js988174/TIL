@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +35,28 @@ public class MemberController {
     public MemberController(MemberService memberService) {
 
     }
+    @GetMapping("/add")
+    public String form(Model model)  {
+        model.addAttribute("member", new Member());
+        return "member/createMemberForm";
+    }
 
+    @PostMapping("/add")
+    public String add(@Valid Member member, BindingResult bindingResult) throws Exception {
+        if (bindingResult.hasErrors()) {
+            return "member/createMemberForm";
+        }
+
+        Member m = new Member();
+        m.setId(member.getId());
+        m.setPw((member.getPw()));
+        m.setName(member.getName());
+        System.out.println("add");
+
+        memberService.add(m);
+
+        return "redirect:/member/list";
+    }
 
     @GetMapping("/list")
     public String list(Model model) throws Exception {
@@ -41,5 +64,7 @@ public class MemberController {
         model.addAttribute("list", list);
         return "member/memberList";
     }
+
+
 
 }

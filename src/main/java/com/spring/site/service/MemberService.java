@@ -13,5 +13,10 @@ public interface MemberService {
 
     List<Member> list() throws Exception;
 
-    Member oneSelect(Member member)  ;
+
+    Member oneSelect(Member member);
+
+
+
+
 }
