@@ -1,20 +1,28 @@
 package com.spring.site.etc;
 
 import com.spring.site.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SpringSecurity extends WebSecurityConfigurerAdapter {
+
     private MemberService memberService;
 
+    private Token token;
+
+    private UserDetailsService userDetailsService;
 
     /* static 관련설정은 무시 */
     @Override
@@ -34,12 +42,18 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin() // 7
                 .loginPage("/loginForm") // 로그인 페이지 링크
+                .usernameParameter("id")
+                .passwordParameter("pw")
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/home") // 로그인 성공 후 리다이렉트 주소
                 .and()
                 .logout() // 8
                 .logoutSuccessUrl("/") // 로그아웃 성공시 리다이렉트 주소
-                .invalidateHttpSession(true) // 세션 날리기
+                .invalidateHttpSession(true); // 세션 날리기
+//                .and()
+//                .addFilterBefore(new TokenFilter(token),
+//                        UsernamePasswordAuthenticationFilter.class);
+
         ;
 
         System.out.println("세큐리티 컨피규어 로그");
@@ -49,4 +63,5 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
 }

@@ -36,9 +36,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member oneSelect(Member member)   {
-
-        return member ;
+    public Member oneSelect(Member member) {
+        return member;
     }
 
 
