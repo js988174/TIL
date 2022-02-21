@@ -24,7 +24,7 @@ public class LoginController {
     MemberService memberService;
     @PostMapping("/login")
     public String loginCheck(Member member, HttpServletResponse response) throws Exception {
-        System.out.println("로그인"+member);
+        System.out.println("로그인"+member);/*
         if(memberService.oneSelect(member)!=null) {
             String token = Token.JwtToken(member.getId());
             response.setHeader("X-AUTH-TOKEN", token);
@@ -37,9 +37,9 @@ public class LoginController {
             System.out.println(token);
 
             return "home";
-        }
-
-        return "loginForm";
+        }*/
+        System.out.println("로그인컨트롤러");
+        return "/";
     }
 
     @GetMapping("/loginForm")

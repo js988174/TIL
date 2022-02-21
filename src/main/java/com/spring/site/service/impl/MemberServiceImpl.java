@@ -36,9 +36,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member oneSelect(Member member)   {
+    public Member oneSelect(Member member) throws Exception {
 
-        return member ;
+        return memberMapper.selectOne(member) ;
     }
 
 
