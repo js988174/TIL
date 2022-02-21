@@ -5,6 +5,7 @@ import com.spring.site.etc.Token;
 import com.spring.site.service.MemberService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,4 +64,5 @@ public class LoginController {
 
         return "redirect:/member/list";
     }
+
 }

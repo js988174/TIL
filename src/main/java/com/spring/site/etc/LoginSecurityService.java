@@ -15,19 +15,15 @@ import org.springframework.stereotype.Service;
 public class LoginSecurityService implements UserDetailsService {
 
     @Autowired
-    MemberService memberService;
+    MemberMapper memberMapper;
 
     @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        Member member = new Member();
-        member.setId(userName);
-        System.out.println("loadUserByUsername");
-        member = memberService.oneSelect(member);
-               if (member != null) {
-                  return new LoginSecurity(member);
-               }
-
-            return null;
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+        Member member = memberMapper.selectOne(userId);
+        if (member == null){
+            throw new UsernameNotFoundException("존재하지 않는 회원입니다.");
+        }
+        return new LoginSecurity(member);
     }
 
 
