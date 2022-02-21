@@ -14,8 +14,8 @@ public interface MemberService {
     List<Member> list() throws Exception;
 
 
-    Member oneSelect(Member member) throws Exception;
 
+    Member oneSelect(Member member);
 
 
 

@@ -1,12 +1,17 @@
 package com.spring.site.etc;
 
 import com.spring.site.domain.Member;
+import lombok.Builder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.FetchType;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
 // 시큐리티가 로그인 주소에서 낚아챔
 // 로그인을 진행이 완료가 되면 시큐리티 session을 만들어줍니다
 // 오브젝트타입 => Authentication
@@ -14,7 +19,9 @@ import java.util.Collection;
 //User 오브젝트 타입 = > UserDetails 타입객체
 //Security Session => Authentikation => UserDetails
 public class LoginSecurity implements UserDetails {
+
     private Member member;
+
     public LoginSecurity(Member member){
         this.member = member;
     }
@@ -39,7 +46,7 @@ public class LoginSecurity implements UserDetails {
 
     @Override
     public String getUsername() {
-        return member.getName();
+        return member.getId();
     }
 
     @Override

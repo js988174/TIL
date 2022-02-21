@@ -2,15 +2,19 @@ package com.spring.site.domain;
 
 
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @NoArgsConstructor
 public class Member {
+
     private int no;
     @NotBlank(message = "아이디를 입력해주세요.")
     @Pattern(regexp = "[a-zA-Z0-9]{2,9}",
@@ -24,6 +28,8 @@ public class Member {
     @Size(min = 2, max = 8, message = "이름을 2~8자 사이로 입력해주세요.")
     private String name;
     private String role = "ROLE_USER";
+    private List<String> roles = new ArrayList<>();
+
     public int getNo() {
         return no;
     }
@@ -53,16 +59,21 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
-    public String getRole() { return this.role; }
+
+    public String getRole() {
+        return role;
+    }
+
     public void setRole(String role) {
         this.role = role;
     }
 
-    public Member(int no, String id, String pw, String name) {
-        this.no = no;
-        this.id = id;
-        this.pw = pw;
-        this.name = name;
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     @Override
@@ -72,6 +83,19 @@ public class Member {
                 ", id='" + id + '\'' +
                 ", pw='" + pw + '\'' +
                 ", name='" + name + '\'' +
+                ", role='" + role + '\'' +
+                ", roles=" + roles +
                 '}';
     }
+
+    public Member(int no, String id, String pw, String name, String role, List<String> roles) {
+        this.no = no;
+        this.id = id;
+        this.pw = pw;
+        this.name = name;
+        this.role = role;
+        this.roles = roles;
+    }
+
+
 }

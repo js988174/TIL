@@ -5,11 +5,14 @@ import com.spring.site.etc.Token;
 import com.spring.site.service.MemberService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
@@ -22,9 +25,12 @@ public class LoginController {
     ServletContext sc;
     @Autowired
     MemberService memberService;
+    @Autowired
+    Token jwtToken;
+
     @PostMapping("/login")
     public String loginCheck(Member member, HttpServletResponse response) throws Exception {
-        System.out.println("로그인"+member);/*
+        System.out.println("로그인" + member);/*
         if(memberService.oneSelect(member)!=null) {
             String token = Token.JwtToken(member.getId());
             response.setHeader("X-AUTH-TOKEN", token);
@@ -40,6 +46,14 @@ public class LoginController {
         }*/
         System.out.println("로그인컨트롤러");
         return "/";
+    }
+    public String loginCheck(@RequestBody Member member) throws Exception {
+        System.out.println("로그인"+member);
+        if(memberService.oneSelect(member)!=null) {
+            return  jwtToken.JwtToken(member.getId(), member.getRoles());
+        }
+
+        return "loginForm";
     }
 
     @GetMapping("/loginForm")
@@ -68,4 +82,5 @@ public class LoginController {
 
         return "redirect:/member/list";
     }
+
 }
