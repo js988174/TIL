@@ -28,14 +28,14 @@ public class LoginAuthProvider implements AuthenticationProvider {
         System.out.println("authentication.getName() = " + authentication.getName());
 
         String pw = authentication.getCredentials().toString();//비밀번호
-        System.out.println("(String) authentication.getCredentials()= " + passwordEncoder.encode(pw));
+        System.out.println("(String) authentication.getCredentials()= " + authentication.getCredentials());
         LoginSecurity user= (LoginSecurity) userDetailsService.loadUserByUsername(id);
         System.out.println("비밀번호 체크");
         System.out.println("user.getPassword() =" + user.getPassword() );
-        /*if(!passwordEncoder.matches( user.getPassword(),pw)) {
+        if(!passwordEncoder.matches(pw,user.getPassword())) {
             System.out.println("비밀번호 에러");
             throw new BadCredentialsException("비밀번호 불일치");
-        }*/
+        }
         System.out.println("로그인 제대로 성공");
         return new UsernamePasswordAuthenticationToken(id, pw, user.getAuthorities());
 

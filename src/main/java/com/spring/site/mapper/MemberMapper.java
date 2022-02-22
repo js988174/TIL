@@ -19,6 +19,6 @@ public interface MemberMapper {
     @Select("SELECT * FROM member")
     List<Member> allList() throws Exception;
     @Select("SELECT * FROM member where id = #{id}")
-    Member selectOne(String userId);
+    Member selectOne(Member member);
 
 }
