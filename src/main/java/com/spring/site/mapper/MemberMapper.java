@@ -20,5 +20,6 @@ public interface MemberMapper {
     List<Member> allList() throws Exception;
     @Select("SELECT * FROM member where id = #{id}")
     Member selectOne(String userId);
-
+    @Select("SELECT * FROM member where id = #{id}")
+    boolean idCheck(String id);
 }

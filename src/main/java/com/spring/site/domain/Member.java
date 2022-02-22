@@ -21,13 +21,13 @@ public class Member {
             message = "아이디는 영문, 숫자만 가능하며 2 ~ 10자리까지 가능합니다.")
     private String id;
     @NotBlank(message = "비밀번호를 입력해주세요.")
-    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}",
-            message = "비밀번호는 영문과 숫자 조합으로 8 ~ 16자리까지 가능합니다.")
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,16}",
+            message = "비밀번호는 영문과 숫자 조합으로 6 ~ 16자리까지 가능합니다.")
     private String pw;
     @NotBlank(message = "이름을 입력해주세요.")
     @Size(min = 2, max = 8, message = "이름을 2~8자 사이로 입력해주세요.")
     private String name;
-    private String role = "ROLE_USER";
+    private String role = "ROLE_ADMIN";
     private List<String> roles = new ArrayList<>();
 
     public int getNo() {

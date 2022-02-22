@@ -41,4 +41,9 @@ public class MemberServiceImpl implements MemberService {
         return memberMapper.selectOne(member.getId()) ;
 
     }
+
+    @Override
+    public boolean checkId(String id) {
+        return memberMapper.idCheck(id);
+    }
 }

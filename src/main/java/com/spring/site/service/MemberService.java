@@ -13,10 +13,8 @@ public interface MemberService {
 
     List<Member> list() throws Exception;
 
-
-
     Member oneSelect(Member member);
 
-
+    boolean checkId(String id);
 
 }

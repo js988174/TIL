@@ -6,10 +6,15 @@
         <h1>Hello Spring</h1>
         <p>회원 기능</p>
         <p>
-            <a href="/add">회원 가입</a>
+            <a href="member/add">회원 가입</a>
             <a href="/member/list">회원 목록</a>
             <a href="/loginForm">로그인</a>
+            <a href="/admin/list">관리자</a>
         </p>
-    </div>     </div>
+        <form id="logout" th:action="@{logout}" method="GET">
+        <input type="submit" value="로그아웃">
+        </form>
+    </div>
+</div>
 </body>
 </html>

@@ -16,8 +16,13 @@
         <label th:for="pw">비밀번호</label>
         <input type="text" name="pw" class="form-control" placeholder="비밀번호를 입력해주세요">
     </div>
+        <div th:if="${param.error}">
+            <p th:text="${exception}" class="alert alert-danger"></p>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary" onClick="location.href='/member/add'">회원 가입</button>
     </form>
+
 </div>
 
 

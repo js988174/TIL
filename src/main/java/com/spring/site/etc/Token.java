@@ -31,7 +31,7 @@ public class Token {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
-    // 토큰 정보
+    // 토큰 발급
     public String JwtToken(String member, List<String> roles) {
         Claims claims = Jwts.claims().setSubject(member); // 토큰에 저장되는 정보
         claims.put("roles", roles);
@@ -43,6 +43,9 @@ public class Token {
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
+
+    // 토큰 생성
+
 
     // 토큰 인증 정보 조회
     public Authentication getAuthentication(String token) {

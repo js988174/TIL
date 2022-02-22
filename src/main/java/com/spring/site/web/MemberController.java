@@ -35,28 +35,7 @@ public class MemberController {
     public MemberController(MemberService memberService) {
 
     }
-    @GetMapping("/add")
-    public String form(Model model)  {
-        model.addAttribute("member", new Member());
-        return "member/createMemberForm";
-    }
 
-    @PostMapping("/add")
-    public String add(@Valid Member member, BindingResult bindingResult) throws Exception {
-        if (bindingResult.hasErrors()) {
-            return "member/createMemberForm";
-        }
-
-        Member m = new Member();
-        m.setId(member.getId());
-        m.setPw((member.getPw()));
-        m.setName(member.getName());
-        System.out.println("add");
-
-        memberService.add(m);
-
-        return "redirect:/member/list";
-    }
 
     @GetMapping("/list")
     public String list(Model model) throws Exception {
