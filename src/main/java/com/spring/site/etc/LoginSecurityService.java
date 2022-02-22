@@ -22,7 +22,7 @@ public class LoginSecurityService implements UserDetailsService {
         Member member = new Member();
         member.setId(id);
         member = memberService.oneSelect(member);
-        System.out.println("loadUserByUsername 성공");
+        System.out.println("memberService.oneSelect(member" + memberService.oneSelect(member).toString());
         if(member !=null){
             System.out.println(id);
             System.out.println("로그인 성공");
