@@ -43,7 +43,11 @@ public class MemberController {
         model.addAttribute("list", list);
         return "member/memberList";
     }
-
+    @GetMapping("/detail")
+    public String detail(Model model,Member member) throws Exception {
+        model.addAttribute(member);
+        return "member/memberList";
+    }
 
 
 }
