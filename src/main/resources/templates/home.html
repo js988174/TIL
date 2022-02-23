@@ -1,12 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: headFragment">
+    <div th:replace="fragments/header :: header"></div>
+</head>
 <body>
 <div class="container">
+
     <div>
-        <h1>Hello Spring</h1>
-        <p>회원 기능</p>
+        <h1>HOME</h1>
+        <p>기능 구현중</p>
         <p>
-            <a href="member/add">회원 가입</a>
+            <a href="/add">회원 가입</a>
             <a href="/member/list">회원 목록</a>
             <a href="/loginForm">로그인</a>
             <a href="/admin/list">관리자</a>

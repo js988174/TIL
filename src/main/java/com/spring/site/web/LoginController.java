@@ -35,12 +35,11 @@ public class LoginController {
     Token jwtToken;
 //    @Autowired
 //    IdCheckFilter idCheckFilter;
-
+//
 //    @InitBinder
 //    public void validatorBinder(WebDataBinder binder) {
 //        binder.addValidators(idCheckFilter);
 //    }
-
 
 
     @PostMapping("/login")
@@ -61,13 +60,13 @@ public class LoginController {
         return "loginForm";
     }
 
-    @GetMapping("/member/add")
+    @GetMapping("/add")
     public String form(Model model) {
         model.addAttribute("member", new Member());
         return "member/createMemberForm";
     }
 
-    @PostMapping("/member/add")
+    @PostMapping("/add")
     public String add(@Valid Member member, BindingResult bindingResult, Errors errors, Model model) throws Exception {
         if (bindingResult.hasErrors()) {
             model.addAttribute("member", member);

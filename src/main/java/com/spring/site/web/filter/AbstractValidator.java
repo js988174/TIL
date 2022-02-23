@@ -11,6 +11,7 @@ public abstract class AbstractValidator<T> implements Validator {
     public boolean supports(Class<?> clazz) {
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public void validate(Object target, Errors errors) {

@@ -2,9 +2,6 @@ package com.spring.site.domain;
 
 
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -27,7 +24,7 @@ public class Member {
     @NotBlank(message = "이름을 입력해주세요.")
     @Size(min = 2, max = 8, message = "이름을 2~8자 사이로 입력해주세요.")
     private String name;
-    private String role = "ROLE_ADMIN";
+    private String role = "ROLE_USER";
     private List<String> roles = new ArrayList<>();
 
     public int getNo() {
