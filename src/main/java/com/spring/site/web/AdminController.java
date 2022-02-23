@@ -21,7 +21,7 @@ public class AdminController {
     public String list(Model model) throws Exception {
         List<Member> list = memberService.list();
         model.addAttribute("list", list);
-        return "admin/memberList";
+        return "/admin/memberList";
     }
 
 }
