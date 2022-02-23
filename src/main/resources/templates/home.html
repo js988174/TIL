@@ -15,6 +15,7 @@
             <a href="/loginForm">로그인</a>
             <a href="/admin/list">관리자</a>
         </p>
+        <th:p sec:id="id" th:text="${id}"></th:p>
         <form id="logout" th:action="@{logout}" method="GET">
         <input type="submit" value="로그아웃">
         </form>
