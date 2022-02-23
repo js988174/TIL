@@ -1,4 +1,4 @@
-package com.spring.site.etc;
+package com.spring.site.etc.token;
 
 import com.spring.site.service.MemberService;
 import io.jsonwebtoken.*;
@@ -37,6 +37,7 @@ public class Token {
         claims.put("roles", roles);
         Date now = new Date();
         return   Jwts.builder()
+                .setHeaderParam("typ", "JWT")
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + Duration.ofHours(1).toMillis()))

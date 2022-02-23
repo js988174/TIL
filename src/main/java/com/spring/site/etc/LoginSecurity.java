@@ -25,6 +25,11 @@ public class LoginSecurity implements UserDetails {
     public LoginSecurity(Member member){
         this.member = member;
     }
+
+    public Member getMember() {
+        return member;
+    }
+
     //유저 권한 리턴
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
