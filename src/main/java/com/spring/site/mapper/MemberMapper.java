@@ -2,10 +2,7 @@ package com.spring.site.mapper;
 
 
 import com.spring.site.domain.Member;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -22,4 +19,10 @@ public interface MemberMapper {
     Member selectOne(Member userId);
     @Select("SELECT * FROM member where id = #{id}")
     boolean idCheck(String id);
+
+    @Update("UPDATE Member " +
+            "SET name = IFNULL(#{name},name)" +
+            "IFNULL(#{pw},pw) where id = #{id}")
+    Member idCheck(Member member);
+
 }

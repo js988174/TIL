@@ -70,7 +70,12 @@ public class LoginController {
 
         return "redirect:/member/list";
     }
+    @GetMapping("/check")
+    @ResponseBody
+    public String check(Member member) throws Exception {
 
+        return "loginForm";
+    }
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
