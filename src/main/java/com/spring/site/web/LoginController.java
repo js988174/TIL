@@ -1,7 +1,7 @@
 package com.spring.site.web;
 
 import com.spring.site.domain.Member;
-import com.spring.site.etc.token.Token;
+import com.spring.site.etc.token.TokenProvider;
 import com.spring.site.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,9 +12,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.Map;
 
 @Controller
 public class LoginController {
@@ -23,14 +25,7 @@ public class LoginController {
     @Autowired
     MemberService memberService;
     @Autowired
-    Token jwtToken;
-//    @Autowired
-//    IdCheckFilter idCheckFilter;
-//
-//    @InitBinder
-//    public void validatorBinder(WebDataBinder binder) {
-//        binder.addValidators(idCheckFilter);
-//    }
+    TokenProvider jwtToken;
 
 
     @PostMapping("/login")
@@ -38,13 +33,15 @@ public class LoginController {
         System.out.println("로그인" + member);
         System.out.println("로그인컨트롤러");
 
+//        String token = jwtToken.createToken(member.getId(), member.getRoles());
+//        System.out.println(token);
         return "/";
     }
 
     @GetMapping("/loginForm")
     public String loginForm(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "exception", required = false) String exception,
-                            Model model) throws Exception {
+                            Model model, @RequestBody Map<String, String> member) throws Exception {
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
         System.out.println("로그인폼");
