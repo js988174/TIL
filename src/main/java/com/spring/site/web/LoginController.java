@@ -1,25 +1,16 @@
 package com.spring.site.web;
 
 import com.spring.site.domain.Member;
-import com.spring.site.etc.Token;
+import com.spring.site.etc.token.TokenProvider;
 import com.spring.site.service.MemberService;
-import com.spring.site.web.filter.IdCheckFilter;
-import com.spring.site.web.filter.LoginCheckFilter;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -34,14 +25,7 @@ public class LoginController {
     @Autowired
     MemberService memberService;
     @Autowired
-    Token jwtToken;
-//    @Autowired
-//    IdCheckFilter idCheckFilter;
-//
-//    @InitBinder
-//    public void validatorBinder(WebDataBinder binder) {
-//        binder.addValidators(idCheckFilter);
-//    }
+    TokenProvider jwtToken;
 
 
     @PostMapping("/login")
@@ -49,13 +33,15 @@ public class LoginController {
         System.out.println("로그인" + member);
         System.out.println("로그인컨트롤러");
 
+//        String token = jwtToken.createToken(member.getId(), member.getRoles());
+//        System.out.println(token);
         return "/";
     }
 
     @GetMapping("/loginForm")
     public String loginForm(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "exception", required = false) String exception,
-                            Model model) throws Exception {
+                            Model model, @RequestBody Map<String, String> member) throws Exception {
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
         System.out.println("로그인폼");

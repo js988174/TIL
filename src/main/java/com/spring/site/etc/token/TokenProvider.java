@@ -1,58 +1,51 @@
-package com.spring.site.etc;
+package com.spring.site.etc.token;
 
-import com.spring.site.service.MemberService;
+import com.spring.site.etc.LoginSecurityService;
 import io.jsonwebtoken.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
-
-import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.time.Duration;
-import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
-@RequiredArgsConstructor
 @Component
-public class Token {
+public class TokenProvider {
 
-    private String secretKey = "siteKey";
+    private String secretKey = "secret";
 
-    private final UserDetailsService userDetailsService;
+    private long tokenValidTime = 1000L * 60 * 60;
 
-    protected void init() {
-        secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
-    }
+    @Autowired
+    private LoginSecurityService loginSecurityService;
 
-    // 토큰 발급
-    public String JwtToken(String member, List<String> roles) {
+
+    // 토큰 생성
+    public String createToken(String member, List<String> roles) {
         Claims claims = Jwts.claims().setSubject(member); // 토큰에 저장되는 정보
         claims.put("roles", roles);
         Date now = new Date();
         return   Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
-                .setExpiration(new Date(now.getTime() + Duration.ofHours(1).toMillis()))
+                .setExpiration(new Date(now.getTime() + tokenValidTime))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
 
-    // 토큰 생성
 
 
     // 토큰 인증 정보 조회
     public Authentication getAuthentication(String token) {
-        UserDetails userDetails = userDetailsService.loadUserByUsername(this.getUserPk(token));
+        UserDetails userDetails = loginSecurityService.loadUserByUsername(this.getUserPk(token));
         return new UsernamePasswordAuthenticationToken(userDetails,"",userDetails.getAuthorities());
     }
 
+    // 토큰 회원 정보 추출
     public String getUserPk(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
@@ -70,5 +63,6 @@ public class Token {
             return false;
         }
     }
+
 
 }

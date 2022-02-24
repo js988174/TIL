@@ -1,13 +1,13 @@
 package com.spring.site.etc;
 
+
+import com.spring.site.etc.token.TokenProvider;
 import com.spring.site.service.MemberService;
 import com.spring.site.web.filter.LoginCheckFilter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,8 +23,6 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
     private MemberService memberService;
 
-    private Token token;
-
     private UserDetailsService userDetailsService;
 
     private LoginAuthProvider loginAuthProvider;
@@ -32,6 +30,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
     @Autowired
     private LoginCheckFilter loginCheckFilter;
 
+    private TokenProvider jwtToken;
 
 
     /* static 관련설정은 무시 */
@@ -64,9 +63,8 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/") // 로그아웃 성공시 리다이렉트 주소
                 .invalidateHttpSession(true) // 세션 날리기
                 .permitAll();
-//                .and()
-//                .addFilterBefore(new TokenFilter(token),
-//                        UsernamePasswordAuthenticationFilter.class);
+//                .addFilterBefore(new TokenFilter(jwtToken),
+//                        UsernamePasswordAuthenticationFilter.class)
 
         System.out.println("세큐리티 컨피규어 로그");
 

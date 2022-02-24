@@ -1,4 +1,4 @@
-package com.spring.site;
+package com.spring.site.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
