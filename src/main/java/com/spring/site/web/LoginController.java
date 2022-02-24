@@ -29,7 +29,7 @@ public class LoginController {
 
 
     @PostMapping("/login")
-    public String loginCheck(@RequestBody Member member) throws Exception {
+    public String login(@RequestBody Member member) throws Exception {
         System.out.println("로그인" + member);
         System.out.println("로그인컨트롤러");
 
@@ -47,7 +47,14 @@ public class LoginController {
         System.out.println("로그인폼");
         return "loginForm";
     }
+    @PostMapping("/loginForm")
+    @ResponseBody
+    public String loginFormPost(@RequestBody Member member) throws Exception {
 
+        String token = jwtToken.createToken(member.getId(), member.getRoles());
+        System.out.println(token);
+        return token;
+    }
     @GetMapping("/add")
     public String form(Model model) {
         model.addAttribute("member", new Member());

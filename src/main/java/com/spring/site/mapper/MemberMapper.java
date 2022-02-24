@@ -20,9 +20,7 @@ public interface MemberMapper {
     @Select("SELECT * FROM member where id = #{id}")
     boolean idCheck(String id);
 
-    @Update("UPDATE Member " +
-            "SET name = IFNULL(#{name},name)" +
-            "IFNULL(#{pw},pw) where id = #{id}")
-    Member idCheck(Member member);
+    @Update("UPDATE Member SET name = #{name} , pw = #{pw} where id = #{id}")
+    Member update(Member member);
 
 }
