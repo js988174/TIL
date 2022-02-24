@@ -24,7 +24,7 @@ public class Member {
     @NotBlank(message = "이름을 입력해주세요.")
     @Size(min = 2, max = 8, message = "이름을 2~8자 사이로 입력해주세요.")
     private String name;
-    private String role ;
+    private String role = "ROLE_ADMIN";
     private List<String> roles = new ArrayList<>();
 
     public int getNo() {

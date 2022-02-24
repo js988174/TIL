@@ -29,19 +29,19 @@ public class LoginController {
 
 
     @PostMapping("/login")
-    public String loginCheck(Member member) throws Exception {
+    public String loginCheck(@RequestBody Member member) throws Exception {
         System.out.println("로그인" + member);
         System.out.println("로그인컨트롤러");
 
-//        String token = jwtToken.createToken(member.getId(), member.getRoles());
-//        System.out.println(token);
-        return "/";
+        String token = jwtToken.createToken(member.getId(), member.getRoles());
+        System.out.println(token);
+        return token;
     }
 
     @GetMapping("/loginForm")
     public String loginForm(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "exception", required = false) String exception,
-                            Model model, @RequestBody Map<String, String> member) throws Exception {
+                            Model model) throws Exception {
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
         System.out.println("로그인폼");
