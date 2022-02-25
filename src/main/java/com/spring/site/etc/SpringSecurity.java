@@ -1,6 +1,7 @@
 package com.spring.site.etc;
 
 
+import com.spring.site.etc.token.TokenFilter;
 import com.spring.site.etc.token.TokenProvider;
 import com.spring.site.service.MemberService;
 import com.spring.site.web.filter.LoginCheckFilter;
@@ -62,9 +63,12 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/") // 로그아웃 성공시 리다이렉트 주소
                 .invalidateHttpSession(true) // 세션 날리기
-                .permitAll();
-//                .addFilterBefore(new TokenFilter(jwtToken),
-//                        UsernamePasswordAuthenticationFilter.class)
+                .permitAll()
+                .and()
+                .addFilterBefore(new TokenFilter(jwtToken),
+                        UsernamePasswordAuthenticationFilter.class);
+
+
 
         System.out.println("세큐리티 컨피규어 로그");
 

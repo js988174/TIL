@@ -31,7 +31,7 @@ $.ajax({
 type : 'POST',
 url : 'http://localhost:8080/login',
 data : JSON.stringify(datas),
-dataType : 'text',  //위와 같이 dataType:json 일 경우 json 형태로 맞춰서 데이터를 받지 못해 오류 발생
+dataType : 'json',  //위와 같이 dataType:json 일 경우 json 형태로 맞춰서 데이터를 받지 못해 오류 발생
 contentType : "application/json",
 error: function(xhr, status, error){
 alert(error);

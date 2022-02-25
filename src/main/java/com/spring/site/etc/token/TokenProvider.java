@@ -1,6 +1,8 @@
 package com.spring.site.etc.token;
 
+import com.spring.site.domain.Member;
 import com.spring.site.etc.LoginSecurityService;
+import com.spring.site.service.MemberService;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,21 +25,21 @@ public class TokenProvider {
     @Autowired
     private LoginSecurityService loginSecurityService;
 
-
     // 토큰 생성
     public String createToken(String member, List<String> roles) {
         Claims claims = Jwts.claims().setSubject(member); // 토큰에 저장되는 정보
+        Member m = new Member();
         claims.put("roles", roles);
         Date now = new Date();
         return   Jwts.builder()
+                .setHeaderParam("typ", "JWT")
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + tokenValidTime))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
+
     }
-
-
 
     // 토큰 인증 정보 조회
     public Authentication getAuthentication(String token) {
@@ -51,7 +53,7 @@ public class TokenProvider {
     }
 
     // 헤더를 통해 token값 가져오기
-    public String resolveToken(HttpServletRequest request) {
+    public static String resolveToken(HttpServletRequest request) {
         System.out.println("request : "+request.getHeader("X-AUTH-TOKEN"));
         return request.getHeader("X-AUTH-TOKEN");
     }

@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,9 +51,11 @@ public class LoginController {
     @PostMapping("/loginForm")
     @ResponseBody
     public String loginFormPost(@RequestBody Member member) throws Exception {
-
+        System.out.println("토큰 확인용");
         String token = jwtToken.createToken(member.getId(), member.getRoles());
+
         System.out.println(token);
+
         return token;
     }
     @GetMapping("/add")
@@ -86,6 +89,13 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+        Cookie cookie = new Cookie("X-AUTH-TOKEN", null);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(false);
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+
         System.out.println("로그아웃 성공");
         return "redirect:/";
     }
