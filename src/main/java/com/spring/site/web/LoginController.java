@@ -48,6 +48,7 @@ public class LoginController {
         System.out.println("로그인폼");
         return "loginForm";
     }
+
     @PostMapping("/loginForm")
     @ResponseBody
     public String loginFormPost(@RequestBody Member member) throws Exception {
@@ -58,6 +59,7 @@ public class LoginController {
 
         return token;
     }
+
     @GetMapping("/add")
     public String form(Model model) {
         model.addAttribute("member", new Member());

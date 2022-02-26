@@ -1,6 +1,7 @@
 package com.spring.site.etc;
 
 
+import com.spring.site.etc.token.JwtAuthenticationFilter;
 import com.spring.site.etc.token.TokenFilter;
 import com.spring.site.etc.token.TokenProvider;
 import com.spring.site.service.MemberService;
@@ -51,6 +52,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN") // ADMIN만 접근 가능
                 .anyRequest().authenticated() // 나머지 요청들은 권한의 종류에 상관 없이 권한이 있어야 접근 가능
                 .and()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .formLogin() // 7
                 .loginPage("/loginForm") // 로그인 페이지 링크
                 .usernameParameter("id")
@@ -63,10 +65,8 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/") // 로그아웃 성공시 리다이렉트 주소
                 .invalidateHttpSession(true) // 세션 날리기
-                .permitAll()
-                .and()
-                .addFilterBefore(new TokenFilter(jwtToken),
-                        UsernamePasswordAuthenticationFilter.class);
+                .permitAll();
+
 
 
 
