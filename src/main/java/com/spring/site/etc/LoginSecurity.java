@@ -2,6 +2,7 @@ package com.spring.site.etc;
 
 import com.spring.site.domain.Member;
 import lombok.Builder;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +19,8 @@ import java.util.List;
 //Authentlcation 안에 user정보가있어야됨
 //User 오브젝트 타입 = > UserDetails 타입객체
 //Security Session => Authentikation => UserDetails
+
+@Data
 public class LoginSecurity implements UserDetails {
 
     private Member member;

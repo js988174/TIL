@@ -34,9 +34,9 @@ public class LoginController {
         System.out.println("로그인" + member);
         System.out.println("로그인컨트롤러");
 
-        String token = jwtToken.createToken(member.getId(), member.getRoles());
-        System.out.println(token);
-        return token;
+//        String token = jwtToken.createToken(member.getId(), member.getRoles());
+//        System.out.println(token);
+        return "/";
     }
 
     @GetMapping("/loginForm")
@@ -53,11 +53,11 @@ public class LoginController {
     @ResponseBody
     public String loginFormPost(@RequestBody Member member) throws Exception {
         System.out.println("토큰 확인용");
-        String token = jwtToken.createToken(member.getId(), member.getRoles());
+//        String token = jwtToken.createToken(member.getId(), member.getRoles());
+//
+//        System.out.println(token);
 
-        System.out.println(token);
-
-        return token;
+        return "/";
     }
 
     @GetMapping("/add")
