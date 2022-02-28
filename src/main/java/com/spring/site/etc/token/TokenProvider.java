@@ -28,6 +28,7 @@ public class TokenProvider {
     // 토큰 생성
     public String createToken(String member, List<String> roles) {
         Claims claims = Jwts.claims().setSubject(member); // 토큰에 저장되는 정보
+        System.out.println(claims.toString());
         Member m = new Member();
         claims.put("roles", roles);
         Date now = new Date();

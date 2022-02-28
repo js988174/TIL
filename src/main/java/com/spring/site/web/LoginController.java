@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 @Controller
 public class LoginController {
@@ -40,11 +41,13 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(Member member, HttpRequest request) throws Exception {
+    public String login(Member member, HttpServletResponse response) throws Exception {
         Member loginSecurity = memberService.oneSelect(member);
 
         System.out.println("토큰 확인용");
         String token = jwtToken.createToken(loginSecurity.getId(), loginSecurity.getRole());
+        response.setHeader("token",token);
+        System.out.println(response.getHeader("token"));
         System.out.println(token);
 
         return "/home";
