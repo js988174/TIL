@@ -26,13 +26,13 @@ public class TokenProvider {
     private LoginSecurityService loginSecurityService;
 
     // 토큰 생성
-    public static String createToken(String member, List<String> roles) {
+    public String createToken(String member, List<String> roles) {
         Claims claims = Jwts.claims().setSubject(member); // 토큰에 저장되는 정보
         Member m = new Member();
         claims.put("roles", roles);
         Date now = new Date();
         return   Jwts.builder()
-                .setHeaderParam("typ", "JWT")
+                .setHeaderParam("type", "token")
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + tokenValidTime))
@@ -54,8 +54,8 @@ public class TokenProvider {
 
     // 헤더를 통해 token값 가져오기
     public static String resolveToken(HttpServletRequest request) {
-        System.out.println("request : "+request.getHeader("X-AUTH-TOKEN"));
-        return request.getHeader("X-AUTH-TOKEN");
+        System.out.println("request : "+request.getHeader("token"));
+        return request.getHeader("token");
     }
 
     public boolean validateToken(String jwtToken) {
