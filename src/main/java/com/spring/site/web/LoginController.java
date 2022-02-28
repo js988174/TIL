@@ -10,12 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.net.http.HttpRequest;
 
 @Controller
 public class LoginController {
@@ -38,15 +40,14 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    @ResponseBody
-    public String login(@RequestBody Member member) throws Exception {
+    public String login(Member member, HttpRequest request) throws Exception {
         Member loginSecurity = memberService.oneSelect(member);
 
         System.out.println("토큰 확인용");
-        String token = jwtToken.createToken(loginSecurity.getId(), loginSecurity.getRoles());
+        String token = jwtToken.createToken(loginSecurity.getId(), loginSecurity.getRole());
         System.out.println(token);
 
-        return token;
+        return "/home";
     }
 
 

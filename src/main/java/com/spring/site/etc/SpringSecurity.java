@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -54,16 +55,17 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN") // ADMIN만 접근 가능
                 .anyRequest().authenticated() // 나머지 요청들은 권한의 종류에 상관 없이 권한이 있어야 접근 가능
                 .and()
-                .formLogin().disable()// 7
-//                .loginPage("/loginForm") // 로그인 페이지 링크
-//                .usernameParameter("id")
-//                .passwordParameter("pw")
-//                .failureHandler(loginCheckFilter)
-//                .loginProcessingUrl("/login")//로그인 동작
-//                .defaultSuccessUrl("/") // 로그인 성공 후 리다이렉트 주소
-//                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .formLogin().disable()
+                /*.loginPage("/loginForm") // 로그인 페이지 링크
+                .usernameParameter("id")
+                .passwordParameter("pw")
+                .failureHandler(loginCheckFilter)
+                .loginProcessingUrl("/login")//로그인 동작
+                .defaultSuccessUrl("/") // 로그인 성공 후 리다이렉트 주소
+                .and()*/
                 .logout() // 8
-                .logoutUrl("/logout")
+                .logoutUrl("/home")
                 .logoutSuccessUrl("/") // 로그아웃 성공시 리다이렉트 주소
                 .invalidateHttpSession(true) // 세션 날리기
                 .permitAll()

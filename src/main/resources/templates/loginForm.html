@@ -24,26 +24,6 @@
     </form>
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
-function loginCustom_ajax(){
-var datas = objToJson($("form[name=login]").serializeArray());
-
-$.ajax({
-type : 'POST',
-url : 'http://localhost:8080/login',
-data : JSON.stringify(datas),
-dataType : 'text',  //위와 같이 dataType:json 일 경우 json 형태로 맞춰서 데이터를 받지 못해 오류 발생
-contentType : "application/json",
-error: function(xhr, status, error){
-alert(error);
-},
-success : function(token){
-console.log(token);
-var expireDay = 24 * 60 * 60 * 1000; //1일
-document.cookie = "X-AUTH-TOKEN=" + token + expireDay +"; path=/";
-
-},
-});
-}
 </script>
 
 </div>
