@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LoginSecurityService implements UserDetailsService {
+
     @Autowired
     MemberService memberService;
-
 
     @SneakyThrows
     @Override

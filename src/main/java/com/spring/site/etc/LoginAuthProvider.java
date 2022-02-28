@@ -1,5 +1,6 @@
 package com.spring.site.etc;
 
+import com.spring.site.domain.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -38,6 +40,7 @@ public class LoginAuthProvider implements AuthenticationProvider {
             System.out.println("비밀번호 에러");
             throw new BadCredentialsException("비밀번호 불일치");
         }
+
 
         System.out.println("로그인 제대로 성공");
         return new UsernamePasswordAuthenticationToken(id, pw, user.getAuthorities());

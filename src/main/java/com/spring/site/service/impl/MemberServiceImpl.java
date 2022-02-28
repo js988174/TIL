@@ -3,6 +3,8 @@ package com.spring.site.service.impl;
 
 
 import com.spring.site.domain.Member;
+import com.spring.site.etc.LoginSecurity;
+import com.spring.site.etc.token.TokenProvider;
 import com.spring.site.mapper.MemberMapper;
 import com.spring.site.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +46,5 @@ public class MemberServiceImpl implements MemberService {
     public boolean checkId(String id) {
         return memberMapper.idCheck(id);
     }
+
 }

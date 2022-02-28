@@ -1,6 +1,7 @@
 package com.spring.site.etc;
 
 
+
 import com.spring.site.etc.token.TokenFilter;
 import com.spring.site.etc.token.TokenProvider;
 import com.spring.site.service.MemberService;
@@ -8,6 +9,7 @@ import com.spring.site.web.filter.LoginCheckFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -46,6 +48,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http
+                .httpBasic().disable()// 로그인 기본 주소 막기
                 .authorizeRequests() //
                 .antMatchers("/login","/loginForm","/home","/add").permitAll() // 누구나 접근 허용
                 .antMatchers("/member/**").hasRole("USER") // USER, ADMIN만 접근 가능
