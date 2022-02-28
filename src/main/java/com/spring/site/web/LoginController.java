@@ -12,12 +12,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.Map;
 
 @Controller
 public class LoginController {
@@ -29,16 +27,6 @@ public class LoginController {
     TokenProvider jwtToken;
 
 
-    @PostMapping("/login")
-    public String login(@RequestBody Member member) throws Exception {
-        System.out.println("로그인" + member);
-        System.out.println("로그인컨트롤러");
-
-//        String token = jwtToken.createToken(member.getId(), member.getRoles());
-//        System.out.println(token);
-        return "/";
-    }
-
     @GetMapping("/loginForm")
     public String loginForm(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "exception", required = false) String exception,
@@ -49,16 +37,18 @@ public class LoginController {
         return "loginForm";
     }
 
-    @PostMapping("/loginForm")
+    @PostMapping("/login")
     @ResponseBody
-    public String loginFormPost(@RequestBody Member member) throws Exception {
-        System.out.println("토큰 확인용");
-//        String token = jwtToken.createToken(member.getId(), member.getRoles());
-//
-//        System.out.println(token);
+    public String login(@RequestBody Member member) throws Exception {
+        Member loginSecurity = memberService.oneSelect(member);
 
-        return "/";
+        System.out.println("토큰 확인용");
+        String token = jwtToken.createToken(loginSecurity.getId(), loginSecurity.getRoles());
+        System.out.println(token);
+
+        return token;
     }
+
 
     @GetMapping("/add")
     public String form(Model model) {
