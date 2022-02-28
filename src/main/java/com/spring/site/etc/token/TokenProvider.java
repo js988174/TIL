@@ -33,7 +33,7 @@ public class TokenProvider {
         claims.put("roles", roles);
         Date now = new Date();
         return   Jwts.builder()
-                .setHeaderParam("typ", "JWT")
+                .setHeaderParam("typ", "token")
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + tokenValidTime))
@@ -56,7 +56,7 @@ public class TokenProvider {
     // 헤더를 통해 token값 가져오기
     public static String resolveToken(HttpServletRequest request) {
 
-        System.out.println("request : "+request.getHeader("typ"));
+        System.out.println("request : "+request.getHeader("token"));
         return request.getHeader("typ");
     }
 
