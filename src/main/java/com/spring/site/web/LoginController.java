@@ -4,6 +4,7 @@ import com.spring.site.domain.Member;
 import com.spring.site.etc.token.TokenProvider;
 import com.spring.site.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -41,15 +42,15 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(Member member, HttpServletResponse response) throws Exception {
+    public String login( Member member,Model model,HttpServletResponse response) throws Exception {
         Member loginSecurity = memberService.oneSelect(member);
 
         System.out.println("토큰 확인용");
         String token = jwtToken.createToken(loginSecurity.getId(), loginSecurity.getRole());
-        response.setHeader("token",token);
-        System.out.println(response.getHeader("token"));
-        System.out.println(token);
-
+        model.addAttribute("token",token);
+        Cookie cookie = new Cookie("token",token);
+        cookie.setMaxAge(60*60*24);
+        response.addCookie(cookie);
         return "/home";
     }
 

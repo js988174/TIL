@@ -32,13 +32,14 @@ public class TokenProvider {
         Member m = new Member();
         claims.put("roles", roles);
         Date now = new Date();
-        return   Jwts.builder()
-                .setHeaderParam("typ", "token")
+        String token =  Jwts.builder()
+                .setHeaderParam("typ", "jwt")
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + tokenValidTime))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
+        return  token;
 
     }
 
@@ -56,7 +57,7 @@ public class TokenProvider {
     // 헤더를 통해 token값 가져오기
     public static String resolveToken(HttpServletRequest request) {
 
-        System.out.println("request : "+request.getHeader("token"));
+        System.out.println("request : "+request.getCookies());
         return request.getHeader("typ");
     }
 
