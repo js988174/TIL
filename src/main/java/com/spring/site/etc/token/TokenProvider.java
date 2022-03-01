@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.util.WebUtils;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -22,15 +23,17 @@ public class TokenProvider {
 
     private long tokenValidTime = 1000L * 60 * 60;
 
+
+
     @Autowired
     private LoginSecurityService loginSecurityService;
 
     // 토큰 생성
-    public String createToken(String member, List<String> roles) {
+    public String createToken(String member, String role) {
         Claims claims = Jwts.claims().setSubject(member); // 토큰에 저장되는 정보
         System.out.println(claims.toString());
         Member m = new Member();
-        claims.put("roles", roles);
+        claims.put("role", role);
         Date now = new Date();
         return   Jwts.builder()
                 .setHeaderParam("type", "token")
@@ -48,16 +51,19 @@ public class TokenProvider {
         return new UsernamePasswordAuthenticationToken(userDetails,"",userDetails.getAuthorities());
     }
 
+    // Request의 Header에서 token 값을 가져옵니다. "X-AUTH-TOKEN" : "TOKEN값'
+    public static String resolveToken(HttpServletRequest request) {
+        String token = null;
+        Cookie cookie = WebUtils.getCookie(request, "token");
+        if(cookie != null) token = cookie.getValue();
+        return token;
+    }
+
     // 토큰 회원 정보 추출
     public String getUserPk(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 
-    // 헤더를 통해 token값 가져오기
-    public static String resolveToken(HttpServletRequest request) {
-        System.out.println("request : "+request.getHeader("token"));
-        return request.getHeader("token");
-    }
 
     public boolean validateToken(String jwtToken) {
         try {

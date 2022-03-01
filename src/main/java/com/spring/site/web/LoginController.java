@@ -46,8 +46,14 @@ public class LoginController {
 
         System.out.println("토큰 확인용");
         String token = jwtToken.createToken(loginSecurity.getId(), loginSecurity.getRole());
-        response.setHeader("token",token);
-        System.out.println(response.getHeader("token"));
+        response.setHeader("token", token);
+
+        Cookie cookie = new Cookie("token", token);
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        response.addCookie(cookie);
+
         System.out.println(token);
 
         return "/home";
@@ -85,13 +91,13 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-        Cookie cookie = new Cookie("X-AUTH-TOKEN", null);
+        Cookie cookie = new Cookie("token", null);
         cookie.setHttpOnly(true);
         cookie.setSecure(false);
         cookie.setMaxAge(0);
         cookie.setPath("/");
         response.addCookie(cookie);
-
+        System.out.println(cookie);
         System.out.println("로그아웃 성공");
         return "redirect:/";
     }

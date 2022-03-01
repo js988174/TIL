@@ -51,6 +51,20 @@
         }
     }
 
+    function getCookie(cookie_name) {
+      var x, y;
+      var val = document.cookie.split(';');
+
+      for (var i = 0; i < val.length; i++) {
+        x = val[i].substr(0, val[i].indexOf('='));
+        y = val[i].substr(val[i].indexOf('=') + 1);
+        x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+        if (x == cookie_name) {
+          return unescape(y); // unescape로 디코딩 후 값 리턴
+        }
+      }
+    }
+
     function checkName(name) {
         if (!checkExistData(name, "이름을"))
             return false;
@@ -62,6 +76,35 @@
         }
         return true;
     }
+
+    function checkCookie() {
+         var cookie = objToJson($("form[name=login]").serializeArray());
+        $.ajax({
+        type = "POST",
+        contentType : "application.json",
+        data : JSON.stringify(cookie),
+        dataType : 'json',
+        error: function(xhr, status, error){
+               alert(error);
+       },
+        success : function(result) {
+            if (result == 0) {
+                alert("토큰값 만료");
+                return false;
+            } else if (result == 9) {
+                alert("통신 오류")
+                return false;
+            } else {
+                console.log(result);
+                var expireDay = 24 * 60 * 60 * 1000;
+                document.cookie = "toen" + token + expireDay +"; path=/";
+            }
+        }
+        });
+    }
+
+
+
 
 </script>
 
