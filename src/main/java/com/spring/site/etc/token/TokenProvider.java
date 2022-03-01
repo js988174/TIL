@@ -51,7 +51,6 @@ public class TokenProvider {
         return new UsernamePasswordAuthenticationToken(userDetails,"",userDetails.getAuthorities());
     }
 
-    // Request의 Header에서 token 값을 가져옵니다. "X-AUTH-TOKEN" : "TOKEN값'
     public static String resolveToken(HttpServletRequest request) {
         String token = null;
         Cookie cookie = WebUtils.getCookie(request, "token");
