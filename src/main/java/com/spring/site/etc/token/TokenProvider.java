@@ -51,27 +51,18 @@ public class TokenProvider {
         return new UsernamePasswordAuthenticationToken(userDetails,"",userDetails.getAuthorities());
     }
 
-    public static String resolveToken(HttpServletRequest request) {
-        String token = null;
-        Cookie cookie = WebUtils.getCookie(request, "token");
-        if(cookie != null) token = cookie.getValue();
-        return token;
-    }
-
     // 토큰 회원 정보 추출
     public String getUserPk(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 
-<<<<<<< HEAD
+
     // 헤더를 통해 token값 가져오기
     public static String resolveToken(HttpServletRequest request) {
-
         System.out.println("request : "+request.getCookies().toString());
         return request.getHeader("typ");
     }
-=======
->>>>>>> 6a960ebbeda2dcf0261cfea07f92d65e2b7ff813
+
 
     public boolean validateToken(String jwtToken) {
         try {
