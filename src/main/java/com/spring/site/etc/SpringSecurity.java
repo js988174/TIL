@@ -49,6 +49,8 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http
                 .httpBasic().disable()// 로그인 기본 주소 막기
+                .cors()
+                .and()
                 .authorizeRequests() //
                 .antMatchers("/login","/loginForm","/home","/add").permitAll() // 누구나 접근 허용
                 .antMatchers("/member/**").hasRole("USER") // USER, ADMIN만 접근 가능

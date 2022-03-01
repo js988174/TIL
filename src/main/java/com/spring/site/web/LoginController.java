@@ -4,7 +4,6 @@ import com.spring.site.domain.Member;
 import com.spring.site.etc.token.TokenProvider;
 import com.spring.site.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -42,15 +41,17 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login( Member member,Model model,HttpServletResponse response) throws Exception {
+    public String login(Member member, HttpServletResponse response) throws Exception {
         Member loginSecurity = memberService.oneSelect(member);
 
         System.out.println("토큰 확인용");
         String token = jwtToken.createToken(loginSecurity.getId(), loginSecurity.getRole());
-        model.addAttribute("token",token);
         Cookie cookie = new Cookie("token",token);
         cookie.setMaxAge(60*60*24);
         response.addCookie(cookie);
+
+        System.out.println(token);
+
         return "/home";
     }
 
@@ -86,13 +87,13 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-        Cookie cookie = new Cookie("X-AUTH-TOKEN", null);
+        Cookie cookie = new Cookie("token", null);
         cookie.setHttpOnly(true);
         cookie.setSecure(false);
         cookie.setMaxAge(0);
         cookie.setPath("/");
         response.addCookie(cookie);
-
+        System.out.println(cookie);
         System.out.println("로그아웃 성공");
         return "redirect:/";
     }
