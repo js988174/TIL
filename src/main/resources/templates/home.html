@@ -25,8 +25,8 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script  th:inline="javascript">
          var request = new XMLHttpRequest();
-         request.
         var cookie = document.cookie
+        console.log(cookie)
         $.ajax({
             type : 'post',
             url : "/tokenCheck.do",
@@ -34,7 +34,7 @@
             data : JSON.stringify(cookie),
             dataType : 'json',
             error: function(xhr, status, error){
-               alert(error);
+               console.log(error);
             },
             success : function(result) {
                 console.log(result)

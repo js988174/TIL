@@ -57,7 +57,7 @@ public class TokenProvider {
     // 헤더를 통해 token값 가져오기
     public static String resolveToken(HttpServletRequest request) {
 
-        System.out.println("request : "+request.getCookies());
+        System.out.println("request : "+request.getCookies().toString());
         return request.getHeader("typ");
     }
 
