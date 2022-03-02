@@ -24,13 +24,13 @@ public class TokenProvider {
 
     private static String secretKey = "secret";
 
-    private static long tokenValidTime = 1000L * 60 * 60;
-    private static final String i ="user";
+    private  long tokenValidTime = 1000L * 60 * 60;
+
     @Autowired
     private LoginSecurityService loginSecurityService;
 
     // 토큰 생성
-    public static String createToken(String member, String role) {
+    public String createToken(String member, String role) {
         Claims claims = Jwts.claims().setSubject(member); // JWT payload 에 저장되는 정보단위
         claims.put("roles", role); // 정보는 key / value 쌍으로 저장된다.
         Date now = new Date();
