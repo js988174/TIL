@@ -66,7 +66,7 @@ public class TokenProvider {
         }
         System.out.println("헤더전체");
         System.out.println("request:"+request.getHeader("cookie"));
-        return request.getHeader("cookie");
+        return request.getHeader("cookie").substring(6);
 
     }
 

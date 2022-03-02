@@ -45,24 +45,16 @@ public class LoginController {
         Member loginSecurity = memberService.oneSelect(member);
         System.out.println("토큰 확인용");
         String token = jwtToken.createToken(loginSecurity.getId(), loginSecurity.getRole());
-<<<<<<< HEAD
         response.setHeader("X-AUTH-TOKEN",token);
         Cookie cookie = new Cookie("X-AUTH-TOKEN", token);
         cookie.setPath("/");
         cookie.setHttpOnly(true);
         cookie.setSecure(true);
         cookie.setMaxAge(1000 * 60 * 60);
-=======
 
-        Cookie cookie = new Cookie("token", token);
-
-        cookie.setMaxAge(60*60*24);
-        response.addCookie(cookie);
-        response.setHeader("Authorization", token);
         System.out.println(token);
         System.out.println(cookie);
 
->>>>>>> 1a760b85de3927edd9125b8948332c2292220849
         return "/home";
     }
 
