@@ -21,18 +21,24 @@ public class TokenFilter extends GenericFilterBean  {
     private final TokenProvider jwtAuthenticationProvider;
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        try {
         String token = jwtAuthenticationProvider.resolveToken((HttpServletRequest) request);
         // 유효한 토큰인지 확인합니다.
-
         System.out.println("jwtAuthenticationProvider.validateToken(token)" + jwtAuthenticationProvider.validateToken(token));
 
-        if(token != null && jwtAuthenticationProvider.validateToken(token)){
-            // 토큰이 유효하면 토큰으로부터 유저 정보를 받아옵니다.
-            Authentication authentication = jwtAuthenticationProvider.getAuthentication(token);
-            // SecurityContext 에 Authentication 객체를 저장합니다.
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+        if (token == null) {
+            System.out.println("doFilter token null");
         }
-        chain.doFilter(request, response);
+            if (token != null && jwtAuthenticationProvider.validateToken(token)) {
+                // 토큰이 유효하면 토큰으로부터 유저 정보를 받아옵니다.
+                Authentication authentication = jwtAuthenticationProvider.getAuthentication(token);
+                // SecurityContext 에 Authentication 객체를 저장합니다.
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
+            chain.doFilter(request, response);
+        } catch (NullPointerException e) {
+            System.out.println("doFilter token null");
+        }
     }
 
 

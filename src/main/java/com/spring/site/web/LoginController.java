@@ -43,15 +43,17 @@ public class LoginController {
     @PostMapping("/login")
     public String login(Member member, HttpServletResponse response) throws Exception {
         Member loginSecurity = memberService.oneSelect(member);
-
         System.out.println("토큰 확인용");
         String token = jwtToken.createToken(loginSecurity.getId(), loginSecurity.getRole());
-        Cookie cookie = new Cookie("token",token);
+
+        Cookie cookie = new Cookie("token", token);
+
         cookie.setMaxAge(60*60*24);
         response.addCookie(cookie);
-
+        response.setHeader("Authorization", token);
         System.out.println(token);
         System.out.println(cookie);
+
         return "/home";
     }
 

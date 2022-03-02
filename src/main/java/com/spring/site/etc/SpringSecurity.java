@@ -2,10 +2,12 @@ package com.spring.site.etc;
 
 
 
+import com.spring.site.etc.token.AuthenticationEntryPointHandler;
 import com.spring.site.etc.token.TokenFilter;
 import com.spring.site.etc.token.TokenProvider;
 import com.spring.site.service.MemberService;
 import com.spring.site.web.filter.LoginCheckFilter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +25,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
     private MemberService memberService;
@@ -72,6 +75,9 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true) // 세션 날리기
                 .permitAll()
                 .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(new AuthenticationEntryPointHandler())
+                .and()
                 .addFilterBefore(new TokenFilter(jwtToken),
                         UsernamePasswordAuthenticationFilter.class);
 
@@ -79,6 +85,12 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
         System.out.println("세큐리티 컨피규어 로그");
 
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     @Bean
