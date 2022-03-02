@@ -76,9 +76,6 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true) // 세션 날리기
                 .permitAll()
                 .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(new AuthenticationEntryPointHandler())
-                .and()
                 .addFilterBefore(new TokenFilter(jwtToken),
                         UsernamePasswordAuthenticationFilter.class);
 

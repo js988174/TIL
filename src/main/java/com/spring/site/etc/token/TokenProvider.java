@@ -22,15 +22,15 @@ import java.util.List;
 @Component
 public class TokenProvider {
 
-    private String secretKey = "secret";
+    private static String secretKey = "secret";
 
-    private long tokenValidTime = 1000L * 60 * 60;
-
+    private static long tokenValidTime = 1000L * 60 * 60;
+    private static final String i ="user";
     @Autowired
     private LoginSecurityService loginSecurityService;
 
     // 토큰 생성
-    public String createToken(String member, String role) {
+    public static String createToken(String member, String role) {
         Claims claims = Jwts.claims().setSubject(member); // JWT payload 에 저장되는 정보단위
         claims.put("roles", role); // 정보는 key / value 쌍으로 저장된다.
         Date now = new Date();
@@ -66,7 +66,11 @@ public class TokenProvider {
         }
         System.out.println("헤더전체");
         System.out.println("request:"+request.getHeader("cookie"));
-        return request.getHeader("cookie").substring(6);
+        if(request.getHeader("cookie") == null){
+            return null;
+        }
+
+        return request.getHeader("cookie");
 
     }
 
@@ -90,16 +94,4 @@ public class TokenProvider {
         }
         return false;
     }
-
-
-//    public boolean validateToken(String jwtToken) {
-//        try {
-//            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
-//            return !claims.getBody().getExpiration().before(new Date());
-//        } catch (Exception e) {
-//            return false;
-//        }
-//    }
-
-
 }
