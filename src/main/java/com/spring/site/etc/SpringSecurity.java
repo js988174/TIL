@@ -25,15 +25,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
+    @Autowired
     private MemberService memberService;
-
+    @Autowired
     private UserDetailsService userDetailsService;
 
     private LoginAuthProvider loginAuthProvider;
 
     @Autowired
     private LoginCheckFilter loginCheckFilter;
-
+    @Autowired
     private TokenProvider jwtToken;
 
 
@@ -90,5 +91,9 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 }

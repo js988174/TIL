@@ -22,7 +22,7 @@ import java.util.Collection;
 public class LoginAuthProvider implements AuthenticationProvider {
     @Autowired
     private UserDetailsService userDetailsService;
-    @Autowired
+    
     private PasswordEncoder passwordEncoder;
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {

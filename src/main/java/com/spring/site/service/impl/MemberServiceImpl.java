@@ -22,7 +22,6 @@ import java.util.Optional;
 public class MemberServiceImpl implements MemberService {
     @Autowired
     MemberMapper memberMapper;
-    @Autowired
     private PasswordEncoder passwordEncoder;
     @Override
     public int add(Member member) throws Exception {
