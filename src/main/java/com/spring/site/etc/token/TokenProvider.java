@@ -5,6 +5,8 @@ import com.spring.site.etc.LoginSecurityService;
 import com.spring.site.service.MemberService;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +15,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.util.WebUtils;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
@@ -22,8 +25,6 @@ public class TokenProvider {
     private String secretKey = "secret";
 
     private long tokenValidTime = 1000L * 60 * 60;
-
-
 
     @Autowired
     private LoginSecurityService loginSecurityService;
@@ -47,20 +48,15 @@ public class TokenProvider {
 
     // 토큰 인증 정보 조회
     public Authentication getAuthentication(String token) {
-        UserDetails userDetails = loginSecurityService.loadUserByUsername(this.getUserPk(token));
+        UserDetails userDetails = loginSecurityService.loadUserByUsername(getUserPk(token));
         return new UsernamePasswordAuthenticationToken(userDetails,"",userDetails.getAuthorities());
     }
-
-
-
 
     // 토큰 회원 정보 추출
     public String getUserPk(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 
-
-    // 헤더를 통해 token값 가져오기
     public static String resolveToken(HttpServletRequest request) {
         Enumeration headerNames = request.getHeaderNames();
         while(headerNames.hasMoreElements()) {
@@ -71,16 +67,39 @@ public class TokenProvider {
         System.out.println("헤더전체");
         System.out.println("request:"+request.getHeader("cookie"));
         return request.getHeader("cookie");
+
     }
 
-    public boolean validateToken(String jwtToken) {
+
+    public boolean validateToken(String token) {
         try {
-            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
-            return !claims.getBody().getExpiration().before(new Date());
-        } catch (Exception e) {
-            return false;
+            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+            return true;
+        } catch (SignatureException e) {
+            System.out.println("Invalid JWT signature");
+        } catch (MalformedJwtException e) {
+            System.out.println("Invalid JWT token");
+        } catch (ExpiredJwtException e) {
+            System.out.println("JWT token is expired");
+        } catch (UnsupportedJwtException e) {
+            System.out.println("JWT token is unsupported");
+        } catch (IllegalArgumentException e) {
+            System.out.println("JWT claims string is empty");
+        } catch (NullPointerException e) {
+            System.out.println("token null");
         }
+        return false;
     }
+
+
+//    public boolean validateToken(String jwtToken) {
+//        try {
+//            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
+//            return !claims.getBody().getExpiration().before(new Date());
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
 
 
 }
