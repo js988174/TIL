@@ -78,7 +78,7 @@
     }
 
     function checkCookie() {
-         var cookie = objToJson($("form[name=login]").serializeArray());
+        var cookie = document.cookie
         $.ajax({
         type = "POST",
         contentType : "application.json",

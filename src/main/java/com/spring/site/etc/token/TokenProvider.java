@@ -58,16 +58,19 @@ public class TokenProvider {
     }
 
     public static String resolveToken(HttpServletRequest request) {
-        Enumeration headerNames = request.getHeaderNames();
-        while(headerNames.hasMoreElements()) {
-            String name = (String)headerNames.nextElement();
-            String value = request.getHeader(name);
-            System.out.println(name + " : " + value + "<br>");
-        }
-        System.out.println("헤더전체");
-        System.out.println("request:"+request.getHeader("cookie"));
-        return request.getHeader("cookie").substring(6);
+//        Enumeration headerNames = request.getHeaderNames();
+//        while(headerNames.hasMoreElements()) {
+//            String name = (String)headerNames.nextElement();
+//            String value = request.getHeader(name);
+//            System.out.println(name + " : " + value + "<br>");
+//        }
+//        System.out.println("헤더전체");
+//        System.out.println("request:"+request.getHeader("cookie"));
 
+        String token = null;
+        Cookie cookie = WebUtils.getCookie(request, "token");
+        if(cookie != null) token = cookie.getValue();
+        return request.getHeader("cookie").substring(6);
     }
 
 

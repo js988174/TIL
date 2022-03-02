@@ -37,6 +37,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private LoginCheckFilter loginCheckFilter;
+
     @Autowired
     private TokenProvider jwtToken;
 
@@ -75,9 +76,6 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/") // 로그아웃 성공시 리다이렉트 주소
                 .invalidateHttpSession(true) // 세션 날리기
                 .permitAll()
-                .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(new AuthenticationEntryPointHandler())
                 .and()
                 .addFilterBefore(new TokenFilter(jwtToken),
                         UsernamePasswordAuthenticationFilter.class);
