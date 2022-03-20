@@ -8,6 +8,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.hamcrest.Matchers.is;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers = HelloController.class)
@@ -23,7 +24,19 @@ public class HelloControllerTest {
         mvc.perform(get("/hello"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(hello));
+    }
 
+    @Test
+    public void helloDto_return()  throws Exception {
+        String name = "hello";
+        int amount = 1000;
 
+        mvc.perform(
+                get("/hello/dto")
+                .param("name", name)
+                .param("amount", String.valueOf(amount)))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", is(name)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.amount", is(amount)));
     }
 }
