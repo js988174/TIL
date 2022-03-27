@@ -14,8 +14,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomOAuth2UserService customOAuth2UserService;
 
-    @Value("${security.enabled:true}")
-    private boolean securityEnabled;
+//    @Value("${security.enabled:true}")
+//    private boolean securityEnabled;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
+                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
                 .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated()
                 .and()
@@ -36,10 +36,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userService(customOAuth2UserService);
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        if(!securityEnabled) {
-            web.ignoring().antMatchers("/**");
-        }
-    }
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        if(!securityEnabled) {
+//            web.ignoring().antMatchers("/**");
+//        }
+//    }
 }

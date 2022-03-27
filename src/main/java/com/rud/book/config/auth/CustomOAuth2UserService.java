@@ -29,7 +29,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         // 로그인 유저 서비스 구분
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
-        //
+
+        // primary key
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
                 .getUserInfoEndpoint().getUserNameAttributeName();
 
