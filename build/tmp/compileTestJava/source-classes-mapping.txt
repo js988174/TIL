@@ -1,2 +1,10 @@
-HelloControllerTest.java
- HelloControllerTest
+com/rud/book/domain/posts/PostsRepositoryTest.java
+ com.rud.book.domain.posts.PostsRepositoryTest
+com/rud/book/web/IndexControllerTest.java
+ com.rud.book.web.IndexControllerTest
+com/rud/book/web/PostsApiControllerTest.java
+ com.rud.book.web.PostsApiControllerTest
+com/rud/book/web/dto/HelloResponseDtoTest.java
+ com.rud.book.web.dto.HelloResponseDtoTest
+com/rud/book/web/HelloControllerTest.java
+ com.rud.book.web.HelloControllerTest

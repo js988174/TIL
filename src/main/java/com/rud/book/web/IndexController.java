@@ -1,5 +1,6 @@
 package com.rud.book.web;
 
+import com.rud.book.config.auth.LoginUser;
 import com.rud.book.config.auth.dto.SessionUser;
 import com.rud.book.service.posts.PostsService;
 import com.rud.book.web.dto.PostsResponseDto;
@@ -20,14 +21,12 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser sessionUser) {
         model.addAttribute("posts", postsService.findAllDesc());
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-
-        if (user != user) {
-            model.addAttribute("username", user.getName());
-            System.out.println(user.getName());
+        if (sessionUser != null) {
+            model.addAttribute("username", sessionUser.getName());
+            System.out.println(sessionUser.getName());
         }
 
         return "index";
