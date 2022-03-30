@@ -22,6 +22,6 @@ public class PostsListResponseDto {
         this.modifiedDate = entity.getModifiedDate();
     }
 
-
+        // aws ㅇ업데이트
 
 }
