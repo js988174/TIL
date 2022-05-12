@@ -70,7 +70,7 @@ public class BoardDto {
    2. 커넥션풀을 이용해 쿼리를 날린다.
    
 * EntityTransaction
-   1. 조회를 제외한 데이터 변경하는 모든 작업은 트랜잭션 안에서 이루어져야 한다.
+   1. 조회를 제외한 데이터 변경하는 모든 작업은 트랜잭션 안에서 이루어진다.
     
 * JPQL
     1. 객체지향 SQL이다
@@ -89,12 +89,54 @@ public class BoardDto {
 * 영속
   
   영속성 컨텍스트에 관리되는 상태
-* 준영속
+* 준영속(detach)
   
-  영속성 컨텍스트에 저장되었다가 분리된 상태
+  영속성 컨텍스트에 저장되었다가 분리된 상태 
+  이렇게 되면 영속성 컨텍스트에서 제공 하는 기능 사용x
 * 삭제
 
     삭제된 상태
 
+* 플러시
+
+    변경감지, 쓰기 지연 SQL 저장소의 쿼리를 데이터베이스에 전송
+
 **만약 영속되어 있는 DB에서 조회하려 할 경우 DB에 select를 하는 것이 아닌 영속성 컨텍스트에서
 객체를 리턴해준다.**  
+
+
+## 엔티티 매핑
+
+### 어노테이션과 컬럼
+* @Entity : JPA를 사용할수 있게 해주는 것
+* @Table: 키를 생성하는 테이블을 만듬
+* @Column : 테이블 안 컬럼과 매칭 제약조건을 걸수 있다. (컬럼에는 유니크키를 잘 안건다.)
+* @Id : 기본 키 설정
+* @Enumerated : enum 타입(ORDINAL를 쓰면 순서에 문제가 생길수 있어서 String을 써야한다 )
+* @Temporal : 날짜 타입의 컬럼
+* @Lob : BLOB(byte), CLOB(String, char[]) 매핑
+* @Transient : 컬럼에 매핑하지 않음(임시로 보관하고 싶을 때 사용)
+
+* name : 필드를 매핑할 테이블의 컬럼 이름
+* insertable, updateable : 등록 가능 , 변경 가능
+* nullable : null값 설정
+* unique : 유니크 제약 조건
+* columnDefinition : 데이터베이스 컬럼 정보 직접 입력 가능하게 해줌 (varchar100)
+* length : 문자 길이 제약조건
+* precision(전체 자릿수),scale(소수 자릿수) : BigDecimal 타입에서 사용
+
+## 데이터베이스 스키마 자동 생성
+
+* create : 기존테이블 삭제 후 다시 생성 
+* create - drop : create 기능에서 종료할때 테이블 drop
+* update : 변경한것 반영
+* validate : 엔티티와 테이블이 정상 매핑되었는지 확인
+* none : 사용x
+
+### 장점
+1. DDL을 애플리케이션 실행 시점에서 자동 생성 (DDL : 데이터 정의어)
+2. 테이블 중심이 아닌 객체 중심
+3. 데이터베이스에 맞는 적절한 DDL 생성
+
+### 주의할점
+**운영 장비에는 create, create-drop, update 사용 금지**
