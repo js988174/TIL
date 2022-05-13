@@ -140,3 +140,11 @@ public class BoardDto {
 
 ### 주의할점
 **운영 장비에는 create, create-drop, update 사용 금지**
+
+## 연관관계 매핑
+
+
+
+## JPA 하면서 생겼던 오류 
+1. entity 이름을 order로 할시 오류 발생
+2. maven -> gradle로 변경시 persistence.xml에 class를 추가해줘야 한다.

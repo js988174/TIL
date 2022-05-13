@@ -4,28 +4,53 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "MBR")
 public class Member {
 
-    @Id
+    @Id @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
+    private String name;
+    private String city;
+    private String street;
+    private String zipcode;
 
-    @Column(name = "name")
-    private String username;
+    public Long getId() {
+        return id;
+    }
 
-    private Integer age;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    @Enumerated(EnumType.STRING)
-    private RoleType roleType;
+    public String getName() {
+        return name;
+    }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDate;
+    public String getCity() {
+        return city;
+    }
 
-    @Lob
-    private String description;
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-    public Member() {}
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
 }

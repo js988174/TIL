@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
 
@@ -17,8 +16,6 @@ public class JpaMain {
         try {
             Member member = em.find(Member.class, 150L);
             System.out.println(member);
-
-            System.out.println("=========================");
 
             tx.commit();
         } catch (Exception e) {
