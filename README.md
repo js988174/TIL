@@ -142,8 +142,37 @@ public class BoardDto {
 **운영 장비에는 create, create-drop, update 사용 금지**
 
 ## 연관관계 매핑
+1. 객체의 양방향 관계는 양방향 관계가 아닌 서로 다른 단반향 관계 2개이다.
+2. 연관관계의 주인만이 외래 키를 관리
+3. 양방향 매핑시 연관관계의 주인에 값을 입력해야한다.
 
+ex) 양방향 
+```
+@Entity 
+@GET
+@SET
+public class Post { 
+@Id @GeneratedValue 
+@Column(name = "POST_ID")
+private Long id; 
+@Column(name = "TITLE")
+private String title;
+ @ManyToOne @JoinColumn(name = "BOARD_ID")
+private Board board; 
+} 
 
+@Entity
+@GET
+@SET
+public class Board{
+@Id @GeneratedValue 
+private Long id; 
+private String title; 
+@OneToMany(mappedBy = "board") 
+List<Post> posts = new ArrayList<>(); 
+  }
+```
+3. 이런식으로 mapperBy 속성으로 주인 지정 (없는 쪽이 주인)
 
 ## JPA 하면서 생겼던 오류 
 1. entity 이름을 order로 할시 오류 발생
