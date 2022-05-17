@@ -1,23 +1,21 @@
 package hellojpa;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Entity
-public class Member {
+public class Delivery {
 
     @Id @GeneratedValue
-    @Column(name = "member_id")
+    @Column(name = "delivery_id")
     private Long id;
-    private String name;
+
     private String city;
     private String street;
     private String zipcode;
+    private DeliveryStatus status;
 
-    @OneToMany(mappedBy = "member")
-    private List<Order> orders = new ArrayList<>();
+    @OneToOne(mappedBy = "delivery")
+    private Order order;
 
     public Long getId() {
         return id;
@@ -25,14 +23,6 @@ public class Member {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getCity() {
@@ -59,11 +49,19 @@ public class Member {
         this.zipcode = zipcode;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public DeliveryStatus getStatus() {
+        return status;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setStatus(DeliveryStatus status) {
+        this.status = status;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

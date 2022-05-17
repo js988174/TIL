@@ -174,6 +174,19 @@ List<Post> posts = new ArrayList<>();
 ```
 3. 이런식으로 mapperBy 속성으로 주인 지정 (없는 쪽이 주인)
 
+## 상속관계 매핑
+### 슈퍼타입과 서브타입 
+* 공통적인 컬럼을 묶는 방법
+  <img src="https://desert-elk-95d.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3f2ab4e9-4c3b-4d91-9a59-471583ce849b%2FUntitled.png?table=block&id=44565e1a-ad49-48ec-8a9e-3aea3e1daad6&spaceId=04134d59-90bb-48a2-b600-8335846e6312&width=2000&userId=&cache=v2"  width="700" height="370">
+  + 이런식으로 만들었을떄 item을 부모 객체로 나머지를 자식 클래스로 만드는것이다.
+  
+* @Inheritance : 부모 객체에 사용하는 어노테이션이고 3가지 속성이 있다.
+  + JOINED: Item 테이블에서 하위테이블과 조인할 때 사용
+  + SINGLE_TABLE: 자식 엔티티를 테이블로 사용하지 않고 Item 테이블에 모든 컬럼을 넣을 때 사용(단일 테이블)
+  + TABLE_PER_CLASS: 부모 객체를 테이블로 사용하지 않고 부모 객체의 멤버변수를 모두 각 테이블마다 사용
+
+* @DiscriminatorColumn : 하위 클래스를 구분해주는 용도로 사용한다.
+* @MappedSuperclass : 엔티티 공통으로 사용하는 매핑 정보 모으는 역활 
 ## JPA 하면서 생겼던 오류 
 1. entity 이름을 order로 할시 오류 발생
 2. maven -> gradle로 변경시 persistence.xml에 class를 추가해줘야 한다.

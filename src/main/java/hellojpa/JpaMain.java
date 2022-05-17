@@ -14,8 +14,11 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member = em.find(Member.class, 150L);
-            System.out.println(member);
+
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("kim");
+            em.persist(book);
 
             tx.commit();
         } catch (Exception e) {
