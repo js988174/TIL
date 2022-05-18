@@ -20,6 +20,7 @@ public class JpaMain {
             book.setAuthor("kim");
             em.persist(book);
 
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();

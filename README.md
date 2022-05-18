@@ -187,6 +187,47 @@ List<Post> posts = new ArrayList<>();
 
 * @DiscriminatorColumn : 하위 클래스를 구분해주는 용도로 사용한다.
 * @MappedSuperclass : 엔티티 공통으로 사용하는 매핑 정보 모으는 역활 
+
+
+## 프록시와 연관관계 
+
+### 프록시
+
+* em.find : 실제 엔티티 객체 조회
+* em.getReference(): 조회를 미루는 가짜 엔티티 객체 조회
+* 값 비교 == x , instance of ok
+* 준영속 상태일 때 프록시를 초기화하면 문제 발생
+
+### 지연로딩(실무에서 주로 사용)
+
+* 즉시로딩을 사용하면 SQL에서 문제가 발생한다.
+* FetchType.Lazy를 하면 지연로딩으로 설정되며 해당 객체에 속성을 사용하지 않으면 프록시가 반환되고 사용할 때 쿼리가 날라간다.
+* ManyToOne OneToOne은 기본값으로 즉시로딩을 가지며 나머지는 지연로딩을 가진다.
+
+## 영속성 전이: CASCADE
+
+```
+public class Parent{
+@OneToMany(mappedBy = "parent")
+private List<Child> childList = new ArrayList<>();
+```
+Child 객체를 DB에 추가할려면 Parent 객체와 Child객체를 영속성시켜주는 방법으로 할수 있다.
+하지만 cascade = CascadeType.ALL을 쓰면 쉽게 해결할 수가 있다.
+
+```
+public class Parent{
+@OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
+private List<Child> childList = new ArrayList<>();
+```
+
+### CASECADE 속성
+* ALL : 모든 상황에서 같은 라이프 사이클을 가짐
+* PERSIST : 영속 시킬 때에만
+* REMOVE : 삭제시
+
+* orphanRemoval = TRUE
+  + 부모 엔티티와 연관관계가 끊어진 자식 엔티티 자동으로 삭제 
+
 ## JPA 하면서 생겼던 오류 
 1. entity 이름을 order로 할시 오류 발생
 2. maven -> gradle로 변경시 persistence.xml에 class를 추가해줘야 한다.
