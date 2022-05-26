@@ -26,3 +26,10 @@ logging.level:
 #  org.hibernate.type: trace
 ```
 
+
+* 실무에서는 무조권 지연 로딩으로 설정 (OneToOne, ManyToOne)
+
+## DB 모델링
+<img src="https://user-images.githubusercontent.com/76925402/170308759-18b3d135-46bd-4541-964d-4686ea1e3fed.png" width="700">
+
+
