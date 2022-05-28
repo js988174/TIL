@@ -62,7 +62,6 @@ public class OrderSearch {
     }
 
     public List<Order> findAll(){
-
         return em.createQuery("select o from Orders o join fetch o.member ",
                 Order.class).getResultList();
     }
