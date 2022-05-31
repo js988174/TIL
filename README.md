@@ -59,3 +59,5 @@ logging.level:
 ```
 
 CreateMemberRequest란 메서드를 만들어서 로직을 분리시킨다.
+
+* Byte
