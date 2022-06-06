@@ -1,7 +1,11 @@
 package jpabook.jpashop.repository;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.QMember;
+import jpabook.jpashop.domain.QOrder;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -23,6 +27,20 @@ public class OrderRepository {
 
         return em.find(Order.class, id);
     }
+
+    public List<Order> findAll(OrderSearch orderSearch) {
+        QOrder order = QOrder.order;
+        QMember member = QMember.member;
+
+        JPAQueryFactory query = new JPAQueryFactory(em);
+        return query
+                .select(order)
+                .from(order)
+                .join(order.member, member)
+                .limit(1000)
+                .fetch();
+    }
+
     public List<Order> findAllByString(OrderSearch orderSearch) {
         //language=JPAQL
         String jpql = "select o From Order o join o.member m";
