@@ -119,6 +119,7 @@ class MemberRepositoryTest {
         // Optional
         Optional<Member> optional = memberRepository.findOptionalByUsername("AAA");
 
+        // git test
     }
 
 }
