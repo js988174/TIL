@@ -15,7 +15,25 @@
 * 크롬 확장 프로그램 Vue.js devtools 설치
 * node.js 터미널에서 npm install -g vue-cli 실행
 
+### vue 확장 프로그램 정리
+
+* View in Browser: html 파일을 기본 브라우저로 볼 수 있게 해준다.
+* HTML Snippets: HTML 태그 조각을 빠르게 작성할 수 있도록 도와줍니다.
+* JS-CSS-HTML Formatters: JS, CSS, HTML의 코드 자동완성 기능 제공
+* Vue 2 snippets: vue 지원 문법 강조 기능
+* Vue-beautify: Vue.js 코드에 대한 정리 배치 기능을 제공
+* ESLint: 자바스크립트 코드 스타일, 문법 체크 기능 제공
+* vetur: 코드 문법 강조, 자동완성, 디버깅 제공
+ 
+
 ## vue 시작하기
 
-1. 
+1. vue init simple hellovuejs 
+2. 컨트롤 + F1로 실행
 
+
+### vue 문법
+
+- 1-1
+    * v-text, {{}} : 태그 문자열을 HTML 인코딩하여 나타내기 떄문에 화면에는 태그 문자여일 그대로 나타난다.
+    * v-html : 태그 문자여을 파싱하여 화면에 나타냄.
