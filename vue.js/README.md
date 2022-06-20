@@ -28,9 +28,9 @@
 
 ## vue 시작하기
 
-1. vue init simple hellovuejs 
+1. vue init simple todoList 
 2. 컨트롤 + F1로 실행
-
+3. vue create 이름 으로 vue 폴더 생성
 
 ### vue 문법
 
