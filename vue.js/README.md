@@ -1,23 +1,21 @@
-# _📌(TIL) Today I Learned📌_
+# Vue.js
 
+* vue.js란 컨트롤러 대신 뷰 모델을 가지는 MVVM(Model-View-ViewModel) 패턴을 기반으로 디자인된,
+자바스크립트 프레임워크이다.
 
-## 📣 Introduce
-### 하루 공부한 내용을 기록합니다.
+## 특징
 
+* MVVM 패턴을 사용한다.
+* 가상 DOM을 지원하여 아주 빠른 UI 렌더링 속도를 제공한다.
 
+## 📣 설치 도구
 
-## 🌏 Project
-### 실무 프로젝트, 토이 프로젝트
+* Node.js를 설치하고 node.js 터미널에서 npm install -g npm 실행
+* Visual Studio Code에서 Vue 확장 프로그램 설치
+* 크롬 확장 프로그램 Vue.js devtools 설치
+* node.js 터미널에서 npm install -g vue-cli 실행
 
+## vue 시작하기
 
+1. 
 
-## ⚡ Language
-
-
-
-## 📘 Book Review
-
-
-## 📒 Library
-* [JPA정의](https://rudtjs49.tistory.com/entry/JPA%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0)
-* [JPA-영속성 컨텍스트](https://rudtjs49.tistory.com/entry/JPA-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%9E%80)
