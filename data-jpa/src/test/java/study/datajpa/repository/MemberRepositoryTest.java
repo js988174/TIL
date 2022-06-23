@@ -1,7 +1,5 @@
 package study.datajpa.repository;
 
-import org.assertj.core.api.Assertions;
-import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +18,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -37,7 +34,8 @@ class MemberRepositoryTest {
 
     @Test
     public void testMember() {
-        Member member = new Member("memberA");
+        Team teamA = new Team("teamA");
+        Member member = new Member("memberA", 10, teamA);
         Member savedMember = memberRepository.save(member);
         Member findMember =
                 memberRepository.findById(savedMember.getId()).get();
@@ -191,7 +189,26 @@ class MemberRepositoryTest {
         // member1 -> TeamA
         // member2 -> TeamB
 
-        Team teamA = new Team("TeamA");
+        Team teamA = new Team("teamA");
+        Team teamB = new Team("teamB");
+        teamRepository.save(teamA);
+        teamRepository.save(teamB);
+
+        Member member1 = new Member("member1", 10, teamA);
+        Member member2 = new Member("member2", 10, teamA);
+
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+
+        entityManager.flush();
+        entityManager.clear();
+
+        List<Member> members = memberRepository.findMemberFetchJoin();
+
+        for (Member member : members) {
+            System.out.println("member ="+ member.getUsername());
+//            System.out.println("member.team =" + member.getTeam().getClass());
+        }
     }
 
 }

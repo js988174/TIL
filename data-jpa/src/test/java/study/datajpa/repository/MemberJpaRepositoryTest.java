@@ -4,9 +4,10 @@ package study.datajpa.repository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import study.datajpa.entity.Member;
+import study.datajpa.entity.Team;
+
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -22,7 +23,8 @@ public class MemberJpaRepositoryTest {
 
     @Test
     public void testMember() {
-        Member member = new Member("memberA");
+        Team teamA = new Team("teamA");
+        Member member = new Member("memberA", 10, teamA);
         Member savedMember = memberJpaRepository.save(member);
         Member findMember = memberJpaRepository.find(savedMember.getId());
         assertThat(findMember.getId()).isEqualTo(member.getId());
@@ -32,8 +34,9 @@ public class MemberJpaRepositoryTest {
 
     @Test
     public void basicCRUD() {
-        Member member1 = new Member("member1");
-        Member member2 = new Member("member2");
+        Team teamA = new Team("teamA");
+        Member member1 = new Member("member1", 10, teamA);
+        Member member2 = new Member("member2", 10, teamA);
         memberJpaRepository.save(member1);
         memberJpaRepository.save(member2);
         //단건 조회 검증

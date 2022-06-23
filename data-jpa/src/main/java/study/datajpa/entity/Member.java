@@ -25,7 +25,7 @@ public class Member {
     private Team team;
 
 
-    public Member(String username) {
+    public Member(String username, int i, Team teamA) {
         this.username = username;
     }
 
