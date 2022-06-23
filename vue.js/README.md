@@ -75,8 +75,7 @@
    * ex) v-for="(contact, index) in contacts"> 
          <tr :key="contact.no">
           
- - 1-3
-          
+
           
           
           
