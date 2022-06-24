@@ -75,7 +75,15 @@
    * ex) v-for="(contact, index) in contacts"> 
          <tr :key="contact.no">
           
- - 
+ - 1-3 비동기 처리 watch
+```
+ 		watch: {
+			"name": function() {
+				this.getDataList(this.options.page, this.options.itemsPerPage);
+			}
+		},
+```
+  * 
           
           
           
