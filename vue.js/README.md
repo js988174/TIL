@@ -85,6 +85,26 @@
 ```
   * name 속성의 변화를 감지하여 함수 호출 (페이징에서 많이 사용)
           
+		 
+## 동적 컴포넌트
+화면의 동일한 위치에 여러 컴포넌트를 표현해야 할 때 써야하는 것
+* component 요소에 b-bind:is="currentView"와 같이 바인딩(매번 실행됨)
+* <keep-alive> : 컴포넌트 안에서 값을 유지 해야 하거나 re-render를 피하고 싶을때 추가
+
+		 
+## vue-router
+vue router란 사용자가 요청한 URL경로에 따라 각각 다른 화면이 렌더링되도록 도와주는 라이브러리
+<router-link to="경로"> 태그
+
+컴파일 시, <a> 태그로 변환
+to 속성
+to 속성 값의 경로로 이동
+v-bind와 함께 사용하면 동적으로 경로를 만들 수 있음
+to="test/path" 처럼 붙이면 현재 url에 이 path가 붙고,
+to="/test/detail" 처럼 붙이면 default url에 붙음 (대표적)
+styling : router-link-exact-active 등 class를 통해 스타일을 줄 수 있음
+		 
+
           
           
  
