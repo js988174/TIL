@@ -7,6 +7,7 @@ import com.rud.book.web.dto.PostsResponseDto;
 import com.rud.book.web.dto.PostsSaveRequestDto;
 import com.rud.book.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -50,5 +51,9 @@ public class PostsService {
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id =" +id));
         postsRepository.delete(posts);
+    }
+
+    public void findAll(Pageable pageable) {
+        postsRepository.findByPage(Post, pageable).map(PostsResponseDto::from);
     }
 }

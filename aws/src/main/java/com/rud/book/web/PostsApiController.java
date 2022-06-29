@@ -5,6 +5,7 @@ import com.rud.book.web.dto.PostsResponseDto;
 import com.rud.book.web.dto.PostsSaveRequestDto;
 import com.rud.book.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -32,5 +33,11 @@ public class PostsApiController {
     public Long delete(@PathVariable Long id) {
         postsService.delete(id);
         return id;
+    }
+
+    @GetMapping("/api/v1/posts/paging")
+    public String paging(Pageable pageable) {
+        postsService.findAll();
+        return "main";
     }
 }
