@@ -43,21 +43,21 @@
 * ESC5에 비해 문법이 간결하다
 
 ## Vue.js 생명주기
- beforeCreate: 인스턴스가 생성되고 실행되는 라이프 사이클 이 떄는 data와 methods 속성이 정의되어 있지 않고 요소에도 접근할 수 없음.
+* beforeCreate: 인스턴스가 생성되고 실행되는 라이프 사이클 이 떄는 data와 methods 속성이 정의되어 있지 않고 요소에도 접근할 수 없음.
    
- created: data와 methods 속성이 정의되어 있기 떄문에 속성값에 접근하는 로직을 구현 해도 된다. 하지만 인스턴스가 부착전이라 돔 요소는 접근할 수 없다.
+* created: data와 methods 속성이 정의되어 있기 떄문에 속성값에 접근하는 로직을 구현 해도 된다. 하지만 인스턴스가 부착전이라 돔 요소는 접근할 수 없다.
 
- beforeMount : render()함수가 호출되기 직전 단계. created 이후에 template 속성에 지정한 마크업 속성을 render() 함수로 변환 후 el 속성에 지정한 화면 요소에 인스턴스를 부착하기 직전에 호출됨 (**화면에 붙이기 전 실행해야 할 코드 구현)
+* beforeMount : render()함수가 호출되기 직전 단계. created 이후에 template 속성에 지정한 마크업 속성을 render() 함수로 변환 후 el 속성에 지정한 화면 요소에 인스턴스를 부착하기 직전에 호출됨 (**화면에 붙이기 전 실행해야 할 코드 구현)
 
- mounted: e1 속성에서 지정한 화면 요소에 인스턴스가 부착되고 난 후 호출되는 단계 **화면 요소를 제어하는 코드 구현
+* mounted: e1 속성에서 지정한 화면 요소에 인스턴스가 부착되고 난 후 호출되는 단계 **화면 요소를 제어하는 코드 구현
 
- beforeUpdate: **변경 예정인 데이터 값을 이용해 작업을 해야할 때 로직 구현하기 
+* beforeUpdate: **변경 예정인 데이터 값을 이용해 작업을 해야할 때 로직 구현하기 
 
- updated: beforeUpdate가 끝나고 화면에 다시 그려지는 단계 데이터가 변경되고 화면 요소를 제어하는 것을 구현하고 싶을 때 사용 (이 단계에서 값을 또 변경하면 무한 루프에 빠지기 떄문에 조심)
+* updated: beforeUpdate가 끝나고 화면에 다시 그려지는 단계 데이터가 변경되고 화면 요소를 제어하는 것을 구현하고 싶을 때 사용 (이 단계에서 값을 또 변경하면 무한 루프에 빠지기 떄문에 조심)
 
- beforeDestroy: 아직 인스턴스가 없어지지 않았기 때문에 접근 가능하며 인스턴스가 사라지기 직전 해야하는 작업 구현                         
+* beforeDestroy: 아직 인스턴스가 없어지지 않았기 때문에 접근 가능하며 인스턴스가 사라지기 직전 해야하는 작업 구현                         
 
- destroyed: 뷰 인스턴스에 정의한 모든 속성, 하위에 선언했던 인스턴스들 모두 제거
+* destroyed: 뷰 인스턴스에 정의한 모든 속성, 하위에 선언했던 인스턴스들 모두 제거
  
 ## vue 문법
 
@@ -75,8 +75,36 @@
    * ex) v-for="(contact, index) in contacts"> 
          <tr :key="contact.no">
           
-
+ - 1-3 비동기 처리 watch
+```
+ 		watch: {
+			"name": function() {
+				this.getDataList(this.options.page, this.options.itemsPerPage);
+			}
+		},
+```
+  * name 속성의 변화를 감지하여 함수 호출 (페이징에서 많이 사용)
           
+		 
+## 동적 컴포넌트
+화면의 동일한 위치에 여러 컴포넌트를 표현해야 할 때 써야하는 것
+* component 요소에 b-bind:is="currentView"와 같이 바인딩(매번 실행됨)
+* <keep-alive> : 컴포넌트 안에서 값을 유지 해야 하거나 re-render를 피하고 싶을때 추가
+
+		 
+## vue-router
+vue router란 사용자가 요청한 URL경로에 따라 각각 다른 화면이 렌더링되도록 도와주는 라이브러리
+* <router-link to="경로"> 태그
+
++ 컴파일 시, <a> 태그로 변환
++ to 속성
++ to 속성 값의 경로로 이동
++ v-bind와 함께 사용하면 동적으로 경로를 만들 수 있음
++ to="test/path" 처럼 붙이면 현재 url에 이 path가 붙고,
++ to="/test/detail" 처럼 붙이면 default url에 붙음 (대표적)
++ styling : router-link-exact-active 등 class를 통해 스타일을 줄 수 있음
+		 
+
           
           
  
