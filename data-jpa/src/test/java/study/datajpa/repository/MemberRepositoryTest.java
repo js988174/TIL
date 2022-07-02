@@ -125,8 +125,7 @@ class MemberRepositoryTest {
         Member findMember = memberRepository.findMemberByUsername("AAA");
         // Optional
         Optional<Member> optional = memberRepository.findOptionalByUsername("AAA");
-
-        // ㄱ
+        
     }
 
     @Test
