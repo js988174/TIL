@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import study.datajpa.dto.MemberDto;
 import study.datajpa.entity.Member;
@@ -23,6 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @Transactional
 @Rollback(false)
+@WebAppConfiguration
 class MemberRepositoryTest {
 
     @Autowired
@@ -125,7 +127,7 @@ class MemberRepositoryTest {
         Member findMember = memberRepository.findMemberByUsername("AAA");
         // Optional
         Optional<Member> optional = memberRepository.findOptionalByUsername("AAA");
-        
+
     }
 
     @Test
@@ -217,7 +219,7 @@ class MemberRepositoryTest {
         entityManager.flush();
         entityManager.clear();
 
-        Member findMember = memberRepository.findReadOnlyUsername("member1");
+        Member findMember = memberRepository.findReadOnlyByUsername("member1");
         findMember.setUsername("member2");
 
         entityManager.flush();
