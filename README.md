@@ -4,6 +4,7 @@
 ## 📣 Introduce
 ### 하루 공부한 내용을 기록합니다.
 * [vue.js](https://github.com/js988174/TIL/tree/main/vue.js)
+* [스프링 기본](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8)
 
 
 
@@ -26,3 +27,4 @@
 * [JPA-영속성 컨텍스트](https://rudtjs49.tistory.com/entry/JPA-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%9E%80)
 * [스프링 데이터 JPA 1](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-JPA-1)
 * [스프링 데이터 JPA 2](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-JPA-2)
+* [스프링 데이터 JPA 3](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-JPA-3)
