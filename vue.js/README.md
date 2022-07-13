@@ -103,7 +103,7 @@ vue router란 사용자가 요청한 URL경로에 따라 각각 다른 화면이
 + to="test/path" 처럼 붙이면 현재 url에 이 path가 붙고,
 + to="/test/detail" 처럼 붙이면 default url에 붙음 (대표적)
 + styling : router-link-exact-active 등 class를 통해 스타일을 줄 수 있음
-		 
+		  
 
           
           
