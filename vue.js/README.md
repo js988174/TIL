@@ -70,6 +70,10 @@
     * v-show : 조건에 부합하지 않더라도 랜더링 함 (if문 보다 자주 사용)
     * v-once : 처음 한 번만 렌더링 수행
     * <template> : 여러 요소의 그룹을 반복 랜더링 처리하고 싶을 때 사용
+    * v-on:click : 버튼을 클릭하면 이벤트 발생
+    * v-on:keyup : 키가 눌렷다 때어질때에 이벤트 발생
+    * v-on:keyup.enter : 사용자가 enter를 눌렀을때에 이벤트가 발생
+    * v-on:submit.prevent : 새로고침을 막아준다.
   
  - 1-2 데이터베이스 값 렌더링 하기
    * ex) v-for="(contact, index) in contacts"> 
@@ -104,7 +108,7 @@ vue router란 사용자가 요청한 URL경로에 따라 각각 다른 화면이
 + to="/test/detail" 처럼 붙이면 default url에 붙음 (대표적)
 + styling : router-link-exact-active 등 class를 통해 스타일을 줄 수 있음
 		  
-
+프로젝트 실행 후 할꺼: node -v, npm -v -> npm install -> npm start 
           
           
  
