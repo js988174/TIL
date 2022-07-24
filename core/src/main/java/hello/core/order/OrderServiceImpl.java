@@ -36,4 +36,6 @@ public class OrderServiceImpl implements OrderService {
     public MemberRepository getMemberRepository() {
         return memberRepository;
     }
+
+    // 깃 오류 테스트
 }
