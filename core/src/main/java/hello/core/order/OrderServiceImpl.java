@@ -33,7 +33,6 @@ public class OrderServiceImpl implements OrderService {
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
 
-
     public MemberRepository getMemberRepository() {
         return memberRepository;
     }
