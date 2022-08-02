@@ -10,6 +10,7 @@
 * [스프링 기본 - 컴포넌트 스캔](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%EC%BA%94)
 * [스프링 기본 - 의존관계 자동 주입](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84-%EC%9E%90%EB%8F%99-%EC%A3%BC%EC%9E%85)
 * [스프링 기본 - 빈 생명주기 콜백](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8-%EB%B9%88-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0-%EC%BD%9C%EB%B0%B1)
+* [스프링 기본 - 빈 스코프](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8-%EB%B9%88-%EC%8A%A4%EC%BD%94%ED%94%84)
 
 
 ## 🌏 Project
