@@ -10,4 +10,5 @@
 for (int tmp: arr) {
  System.out.println(tmp);
 }
+```
 * 향사된 for문은 일반 for문 보다 간결하나 배열이나 컬렉션에 저장된 요소들을 읽어오는 용도로만 사용할 수 있다는 제약이 있다.
