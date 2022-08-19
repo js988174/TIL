@@ -43,6 +43,7 @@
 * [인터넷 네트워크 정리](https://rudtjs49.tistory.com/entry/%EC%9D%B8%ED%84%B0%EB%84%B7-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%A0%95%EB%A6%AC)
 * [HTTP 정리 - 기본과 메서드](https://rudtjs49.tistory.com/entry/HTTP-%EC%A0%95%EB%A6%AC)
 * [HTTP 정리 - 헤더](https://rudtjs49.tistory.com/entry/HTTP-%EC%A0%95%EB%A6%AC-%ED%97%A4%EB%8D%94)
+* [HTTP 정리 - 캐시와 조건부 요청](https://rudtjs49.tistory.com/entry/HTTP-%EC%A0%95%EB%A6%AC-%EC%BA%90%EC%8B%9C%EC%99%80-%EC%A1%B0%EA%B1%B4%EB%B6%80-%EC%9A%94%EC%B2%AD)
   
 ## ⚡ JAVA
 
