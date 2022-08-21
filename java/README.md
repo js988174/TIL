@@ -16,4 +16,10 @@ for (int tmp: arr) {
 ## 배열
 * 배열이란? 같은 타입의 여러 변수를 하나의 묶음으로 다루는 것을 "배열" 이라고 한다.
 
-* 
+* char charAt(int index): 문자열에서 해당 위치에 있는 문자를 반환한다.
+* int length(): 문자열의 길이를 반환한다.
+* String substring(int from, int to): 문자열에서 해당 범위에 있는 문자열을 반환한다.
+* boolean equals(Object obj): 문자열의 내용이 obj와 같은지 확인한다.
+* char[] toCharArray(): 문자열을 문자배열(char[])로 변환해서 반환한다.
+
+
