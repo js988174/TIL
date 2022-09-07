@@ -49,6 +49,6 @@
 * [자바 문법 정리](https://github.com/js988174/TIL/tree/main/java)
 * [모던 자바 인 액션 1장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-1%EC%9E%A5-%EC%9E%90%EB%B0%94-8-9-10-11-%EB%AC%B4%EC%8A%A8-%EC%9D%BC%EC%9D%B4-%EC%9D%BC%EC%96%B4%EB%82%98%EA%B3%A0-%EC%9E%88%EB%8A%94%EA%B0%80)
 * [모던 자바 인 액션 2장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-2%EC%9E%A5-%EB%8F%99%EC%9E%91-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0%ED%99%94-%EC%BD%94%EB%93%9C-%EC%A0%84%EB%8B%AC%ED%95%98%EA%B8%B0)
-* [모던 자바 인 액션 3장]()
+* [모던 자바 인 액션 3장](g)
 
 
