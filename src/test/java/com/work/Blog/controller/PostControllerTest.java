@@ -35,4 +35,19 @@ class PostControllerTest {
 
     }
 
+
+    @Test
+    @DisplayName("/posts 요청시 title값은 필수다.")
+    void test2() throws Exception {
+        // expected
+        mockMvc.perform(get("/posts")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"title\": \"\", \"content\": \"내용입니다.\"}")
+                )
+                .andExpect(status().isOk())
+                .andExpect(content().string("Hello World"))
+                .andDo(print());
+
+    }
+
 }
