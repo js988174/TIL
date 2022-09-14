@@ -19,19 +19,8 @@ import java.util.Map;
 public class PostController {
 
     @GetMapping("/posts")
-    public Map<String, String> post(@RequestBody @Valid PostCreate params, BindingResult result) throws Exception {
-        log.info("params={}", params.toString());
+    public Map<String, String> post(@RequestBody @Valid PostCreate params) throws Exception {
 
-        if (result.hasErrors()) {
-            List<FieldError> fieldErrors = result.getFieldErrors();
-            FieldError fieldError = fieldErrors.get(0);
-            String fieldName = fieldError.getField();
-            String errorMessage = fieldError.getDefaultMessage();
-
-            Map<String, String> error = new HashMap<>();
-            error.put(fieldName, errorMessage);
-            return error;
-        }
 
         return Map.of();
     }
