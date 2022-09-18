@@ -22,11 +22,13 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(Exception.class)
     public ErrorResponse invalidRequestHandler(MethodArgumentNotValidException e) {
-
+            ErrorResponse response = ErrorResponse.builder()
+                    .code("400")
+                    .message("잘못된 요청입니다.")
+                    .build();
 //            FieldError fieldError = e.getFieldError();
 //            String field = fieldError.getField();
 //            String message = fieldError.getDefaultMessage();
-          ErrorResponse response = new ErrorResponse("400", "잘못된 요청입니다.");
 
           for (FieldError fieldError : e.getFieldErrors()) {
               response.addValidation(fieldError.getField(), fieldError.getDefaultMessage());
