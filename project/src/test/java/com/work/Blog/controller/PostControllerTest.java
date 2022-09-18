@@ -5,6 +5,7 @@ import com.work.Blog.domain.Post;
 import com.work.Blog.repository.PostRepository;
 import com.work.Blog.request.PostCreate;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PostControllerTest {
 
     @Autowired
+    private ObjectMapper objectMapper;
+
+    @Autowired
     private MockMvc mockMvc;
 
     @Autowired
     private PostRepository postRepository;
+
+    @BeforeEach
+    void clean() {
+        postRepository.deleteAll();;
+    }
 
     @Test
     @DisplayName("/posts 요청시 Hello World를 출력한다.")
@@ -72,10 +81,18 @@ class PostControllerTest {
     @Test
     @DisplayName("/posts 요청시 DB값 저장")
     void test3() throws Exception {
+        // given
+        PostCreate request = PostCreate.builder()
+                .title("제목입니다.")
+                .content("내용입니다.")
+                .build();
+
+        String json = objectMapper.writeValueAsString(request);
+
         // when
         mockMvc.perform(get("/posts")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"title\": \"제목입니다.\", \"content\": \"내용입니다.\"}")
+                .content(json)
         )
                 .andExpect(status().isOk())
                 .andDo(print());
