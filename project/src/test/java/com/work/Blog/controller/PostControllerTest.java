@@ -1,7 +1,9 @@
 package com.work.Blog.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.work.Blog.domain.Post;
 import com.work.Blog.repository.PostRepository;
+import com.work.Blog.request.PostCreate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,6 +32,15 @@ class PostControllerTest {
     @Test
     @DisplayName("/posts 요청시 Hello World를 출력한다.")
     void test() throws Exception {
+        // given
+        PostCreate request = PostCreate.builder()
+                .title("제목입니다.")
+                .content("내용입니다.")
+                .build();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(request);
+
         // expected
         mockMvc.perform(get("/posts")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
