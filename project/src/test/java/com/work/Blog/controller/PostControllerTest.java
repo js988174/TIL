@@ -1,5 +1,6 @@
 package com.work.Blog.controller;
 
+import com.work.Blog.domain.Post;
 import com.work.Blog.repository.PostRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +11,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -67,8 +70,11 @@ class PostControllerTest {
                 .andDo(print());
 
         // then
-        Assertions.assertEquals(1L, postRepository.count());
+        assertEquals(1L, postRepository.count());
 
+        Post post = postRepository.findAll().get(0);
+        assertEquals("제목입니다.", post.getTitle());
+        assertEquals("내용입니다.", post.getContent());
     }
 
 }
