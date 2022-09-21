@@ -3,6 +3,7 @@ package com.work.Blog.controller;
 
 import com.work.Blog.domain.Post;
 import com.work.Blog.request.PostCreate;
+import com.work.Blog.response.PostResponse;
 import com.work.Blog.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,8 +29,8 @@ public class PostController {
     }
 
     @GetMapping("/posts/{postId}")
-    public Post get(@PathVariable(name = "postId") Long postId) {
-        Post post = postService.get(postId);
-        return post;
+    public PostResponse get(@PathVariable(name = "postId") Long postId) {
+        PostResponse response = postService.get(postId);
+        return response;
     }
 }
