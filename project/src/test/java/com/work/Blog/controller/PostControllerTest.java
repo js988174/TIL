@@ -133,17 +133,15 @@ class PostControllerTest {
     @DisplayName("글 여러개 조회")
     void test5() throws Exception {
         // given
-        Post post1 = Post.builder()
-                .title("foo")
-                .content("bar")
-                .build();
-        postRepository.save(post1);
+        Post post1 = postRepository.save(Post.builder()
+                .title("t1")
+                .content("c1")
+                .build());
 
-        Post post2 = Post.builder()
-                .title("foo")
-                .content("bar")
-                .build();
-        postRepository.save(post2);
+        Post post2 = postRepository.save(Post.builder()
+                .title("t2")
+                .content("c2")
+                .build());
 
 
         // when
@@ -151,6 +149,9 @@ class PostControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()", Matchers.is(2)))
+                .andExpect(jsonPath("$[0].id").value(post1.getId()))
+                .andExpect(jsonPath("$[0].title").value("t1"))
+                .andExpect(jsonPath("$[0].content").value("c1"))
                 .andDo(print());
     }
 }

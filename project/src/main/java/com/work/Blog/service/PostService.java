@@ -7,6 +7,8 @@ import com.work.Blog.response.PostResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,12 +45,10 @@ public class PostService {
         return postResponse;
     }
 
-    public List<PostResponse> getList() {
+    public List<PostResponse> getList(int page) {
+        Pageable pageable =  PageRequest.of(page, 5);
         return postRepository.findAll().stream()
-                .map(post -> PostResponse.builder()
-                         .id(post.getId())
-                         .title(post.getTitle())
-                         .build())
+                .map(PostResponse::new)
                 .collect(Collectors.toList());
     }
 }

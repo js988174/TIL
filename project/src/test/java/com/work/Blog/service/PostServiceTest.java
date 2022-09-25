@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -79,21 +81,30 @@ class PostServiceTest {
     @DisplayName("글 여러개 조회")
     void test3() {
         // given
-        Post post1 = Post.builder()
-                .title("foo")
-                .content("bar")
-                .build();
-        postRepository.save(post1);
+        List<Post> requestPosts = IntStream.range(0, 30)
+                .mapToObj(i -> Post.builder()
+                        .title("제목 - " + i)
+                        .content("내용 - " + i)
+                        .build())
+                .collect(Collectors.toList());
+        postRepository.saveAll(requestPosts);
 
-        Post post2 = Post.builder()
+
+                postRepository.saveAll(List.of(
+                Post.builder()
                 .title("foo")
                 .content("bar")
-                .build();
-        postRepository.save(post2);
+                .build(),
+                        Post.builder()
+                                .title("foo")
+                                .content("bar")
+                                .build()
+                ));
+
 
 
         // when
-        List<PostResponse> posts = postService.getList();
+        List<PostResponse> posts = postService.getList(1);
 
         // then
         assertEquals(2L, posts.size());

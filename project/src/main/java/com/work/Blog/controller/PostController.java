@@ -37,7 +37,7 @@ public class PostController {
     // 조회 API 여러개의 글 조회
     @GetMapping("/posts/list")
     public List<PostResponse> getList() {
-        return postService.getList();
+        return postService.getList(1);
     }
 
 }
