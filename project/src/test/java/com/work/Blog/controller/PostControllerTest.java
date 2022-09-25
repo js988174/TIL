@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.work.Blog.domain.Post;
 import com.work.Blog.repository.PostRepository;
 import com.work.Blog.request.PostCreate;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -126,5 +127,30 @@ class PostControllerTest {
                 .andDo(print());
 
         // then
+    }
+
+    @Test
+    @DisplayName("글 여러개 조회")
+    void test5() throws Exception {
+        // given
+        Post post1 = Post.builder()
+                .title("foo")
+                .content("bar")
+                .build();
+        postRepository.save(post1);
+
+        Post post2 = Post.builder()
+                .title("foo")
+                .content("bar")
+                .build();
+        postRepository.save(post2);
+
+
+        // when
+        mockMvc.perform(get("/posts/list")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()", Matchers.is(2)))
+                .andDo(print());
     }
 }

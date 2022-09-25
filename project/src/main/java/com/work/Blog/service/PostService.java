@@ -9,6 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -38,5 +41,14 @@ public class PostService {
                 .build();
 
         return postResponse;
+    }
+
+    public List<PostResponse> getList() {
+        return postRepository.findAll().stream()
+                .map(post -> PostResponse.builder()
+                         .id(post.getId())
+                         .title(post.getTitle())
+                         .build())
+                .collect(Collectors.toList());
     }
 }
