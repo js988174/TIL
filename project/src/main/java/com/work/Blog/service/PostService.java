@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,9 +46,9 @@ public class PostService {
         return postResponse;
     }
 
-    public List<PostResponse> getList(int page) {
-        Pageable pageable =  PageRequest.of(page, 5);
-        return postRepository.findAll().stream()
+    public List<PostResponse> getList(Pageable pageable) {
+//        Pageable pageable =  PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, "id"));
+        return postRepository.findAll(pageable).stream()
                 .map(PostResponse::new)
                 .collect(Collectors.toList());
     }

@@ -10,12 +10,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.data.domain.Sort.Direction.DESC;
 
 @SpringBootTest
 class PostServiceTest {
@@ -81,7 +85,7 @@ class PostServiceTest {
     @DisplayName("글 여러개 조회")
     void test3() {
         // given
-        List<Post> requestPosts = IntStream.range(0, 30)
+        List<Post> requestPosts = IntStream.range(1, 31)
                 .mapToObj(i -> Post.builder()
                         .title("제목 - " + i)
                         .content("내용 - " + i)
@@ -89,25 +93,13 @@ class PostServiceTest {
                 .collect(Collectors.toList());
         postRepository.saveAll(requestPosts);
 
-
-                postRepository.saveAll(List.of(
-                Post.builder()
-                .title("foo")
-                .content("bar")
-                .build(),
-                        Post.builder()
-                                .title("foo")
-                                .content("bar")
-                                .build()
-                ));
-
-
+        Pageable pageable = PageRequest.of(0, 5, DESC, "id");
 
         // when
-        List<PostResponse> posts = postService.getList(1);
+        List<PostResponse> posts = postService.getList(pageable);
 
         // then
-        assertEquals(2L, posts.size());
-
+        assertEquals(5L, posts.size());
+        assertEquals("제목 - 1", posts.get(0).getTitle());
     }
 }
