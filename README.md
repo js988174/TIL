@@ -1,9 +1,6 @@
 # _📌(TIL) Today I Learned📌_
 ## 하루 공부한 내용을 기록합니다.
 
-## 📣 Introduce
-
-
 ## 🌏 Project
 
 
