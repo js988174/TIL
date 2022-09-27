@@ -3,6 +3,7 @@ package com.work.Blog.service;
 import com.work.Blog.domain.Post;
 import com.work.Blog.repository.PostRepository;
 import com.work.Blog.request.PostCreate;
+import com.work.Blog.request.PostSearch;
 import com.work.Blog.response.PostResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -85,7 +86,7 @@ class PostServiceTest {
     @DisplayName("글 여러개 조회")
     void test3() {
         // given
-        List<Post> requestPosts = IntStream.range(1, 31)
+        List<Post> requestPosts = IntStream.range(0, 20)
                 .mapToObj(i -> Post.builder()
                         .title("제목 - " + i)
                         .content("내용 - " + i)
@@ -93,13 +94,19 @@ class PostServiceTest {
                 .collect(Collectors.toList());
         postRepository.saveAll(requestPosts);
 
-        Pageable pageable = PageRequest.of(0, 5, DESC, "id");
+//        Pageable pageable = PageRequest.of(0, 5, DESC, "id");
+
+        PostSearch postSearch = PostSearch.builder()
+                .page(1)
+                .size(10)
+                .build();
+
 
         // when
-        List<PostResponse> posts = postService.getList(pageable);
+        List<PostResponse> posts = postService.getList(postSearch);
 
         // then
-        assertEquals(5L, posts.size());
-        assertEquals("제목 - 1", posts.get(0).getTitle());
+        assertEquals(10L, posts.size());
+        assertEquals("제목 - 9", posts.get(9).getTitle());
     }
 }

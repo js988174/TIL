@@ -146,7 +146,7 @@ class PostControllerTest {
         postRepository.saveAll(requestPosts);
 
         // when
-        mockMvc.perform(get("/posts?page=1&sort=id,desc")
+        mockMvc.perform(get("/posts?page=10&sort=id,desc")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()", Matchers.is(5)))

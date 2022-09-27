@@ -3,6 +3,7 @@ package com.work.Blog.controller;
 
 import com.work.Blog.domain.Post;
 import com.work.Blog.request.PostCreate;
+import com.work.Blog.request.PostSearch;
 import com.work.Blog.response.PostResponse;
 import com.work.Blog.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -38,8 +39,8 @@ public class PostController {
 
     // 조회 API 여러개의 글 조회
     @GetMapping("/posts")
-    public List<PostResponse> getList(Pageable pageable) {
-        return postService.getList(pageable);
+    public List<PostResponse> getList(@ModelAttribute PostSearch postSearch) {
+        return postService.getList(postSearch);
     }
 
 }
