@@ -3,7 +3,6 @@ package com.work.Blog.domain;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.persistence.Lob;
 
 @Getter
 public class PostEditor {

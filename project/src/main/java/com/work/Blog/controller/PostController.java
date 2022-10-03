@@ -47,6 +47,6 @@ public class PostController {
 
     @PatchMapping("/posts/{postId}")
     public void edit(@PathVariable Long postId, @RequestBody @Valid PostEdit request) {
-        postService.edit(postId, request);
+         postService.edit(postId, request);
     }
 }
