@@ -3,6 +3,7 @@ package com.work.Blog.controller;
 
 import com.work.Blog.domain.Post;
 import com.work.Blog.request.PostCreate;
+import com.work.Blog.request.PostEdit;
 import com.work.Blog.request.PostSearch;
 import com.work.Blog.response.PostResponse;
 import com.work.Blog.service.PostService;
@@ -43,4 +44,9 @@ public class PostController {
         return postService.getList(postSearch);
     }
 
+
+    @PatchMapping("/posts/{postId}")
+    public void edit(@PathVariable Long postId, @RequestBody @Valid PostEdit request) {
+        postService.edit(postId, request);
+    }
 }

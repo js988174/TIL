@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.work.Blog.domain.Post;
 import com.work.Blog.repository.PostRepository;
 import com.work.Blog.request.PostCreate;
+import com.work.Blog.request.PostEdit;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -151,6 +152,51 @@ class PostControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()", Matchers.is(5)))
                 .andExpect(jsonPath("$[0].id", Matchers.is(30)))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("페이지를 0으로 요청하면 첫 페이지를 가져온다.")
+    void test6() throws Exception {
+        // given
+        List<Post> requestPosts = IntStream.range(0,20)
+                .mapToObj(i -> Post.builder()
+                        .title("foo" + i)
+                        .content("bar" + i)
+                        .build())
+                .collect(Collectors.toList());
+        postRepository.saveAll(requestPosts);
+
+        // expected
+        mockMvc.perform(get("/posts?page=0&size=10")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()" , Matchers.is(10)))
+                .andExpect(jsonPath("$[0].title").value("foo19"))
+                .andExpect(jsonPath("$[0].content").value("bar19"))
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("글 제목 수정")
+    void test7() throws Exception {
+        // given
+        Post post = Post.builder()
+                .title("1")
+                .content("1")
+                .build();
+        postRepository.save(post);
+
+        PostEdit postEdit = PostEdit.builder()
+                .title("2")
+                .content("2")
+                .build();
+
+        // expected
+        mockMvc.perform(patch("/posts/{postId}", post.getId())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(postEdit)))
+                .andExpect(status().isOk())
                 .andDo(print());
     }
 }
