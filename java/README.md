@@ -131,3 +131,12 @@ static int factorial (int n) {
 
 ## 생성자에서 다른 생성자 호출하기
 * 생성자 간에 서로 호출할 때는 this를 사용하여 호출한다.
+
+```
+Car(String color, String gearType) {
+this.color = color;
+this.gearType = gearType;
+}
+```
+위에 코드를 보면 알 수 있듯이 매개변수로 선언된 변수의 이름과 인스턴스 변수 이름이 서로 구별이 안 된다. 이런 경우에는 인스턴스 변수 앞에 this를 사용하면된다.
+
