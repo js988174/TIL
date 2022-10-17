@@ -31,8 +31,6 @@
 * [스프링 데이터 JPA 2](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-JPA-2)
 * [스프링 데이터 JPA 3](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%8D%B0%EC%9D%B4%ED%84%B0-JPA-3)
 
-## Go
-
 ## ⚡ vue js
 * [vue.js](https://github.com/js988174/TIL/tree/main/vue.js)
 
