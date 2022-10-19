@@ -186,4 +186,18 @@ class PostServiceTest {
         Assertions.assertEquals("제목 수정", changePost.getTitle());
         Assertions.assertEquals("내용 수정", changePost.getContent());
     }
+
+    @Test
+    @DisplayName("글 삭제")
+    void test7() {
+        Post post = Post.builder()
+                .title("제목")
+                .content("내용")
+                .build();
+        postRepository.save(post);
+
+        postService.delete(post.getId());
+
+        Assertions.assertEquals(0,postRepository.count());
+    }
 }
