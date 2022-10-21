@@ -167,5 +167,4 @@ class child extends parent {
 }
 ```
 
-*
 
