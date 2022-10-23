@@ -50,4 +50,3 @@
 * [모던 자바 인 액션 5장](https://rudtjs49.tistory.com/manage/newpost/29?type=post&returnURL=https%3A%2F%2Frudtjs49.tistory.com%2Fmanage%2Fposts%2F)
 * [모던 자바 인 액션 6장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-6%EC%9E%A5-%EC%8A%A4%ED%8A%B8%EB%A6%BC%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%88%98%EC%A7%91-1)
 * [모던 자바 인 액션 7장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-7%EC%9E%A5-%EB%B3%91%EB%A0%AC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%98%EB%A6%AC%EC%99%80-%EC%84%9C%EB%8A%A5)
-
