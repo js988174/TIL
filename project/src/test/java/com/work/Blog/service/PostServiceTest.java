@@ -1,6 +1,7 @@
 package com.work.Blog.service;
 
 import com.work.Blog.domain.Post;
+import com.work.Blog.exception.PostNotFound;
 import com.work.Blog.repository.PostRepository;
 import com.work.Blog.request.PostCreate;
 import com.work.Blog.request.PostEdit;
@@ -199,5 +200,22 @@ class PostServiceTest {
         postService.delete(post.getId());
 
         Assertions.assertEquals(0,postRepository.count());
+    }
+
+    @Test
+    @DisplayName("글 조회")
+    void test8() {
+        Post post = Post.builder()
+                .title("제목")
+                .content("내용")
+                .build();
+        postRepository.save(post);
+
+        PostResponse response = postService.get(2L);
+
+      Assertions.assertThrows(PostNotFound.class, () -> {
+          postService.get(post.getId() + 1L);
+       });
+
     }
 }
