@@ -1,6 +1,7 @@
 package com.work.Blog.controller;
 
 
+import com.work.Blog.exception.PostNotFound;
 import com.work.Blog.response.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -35,5 +36,17 @@ public class ExceptionController {
           }
 
           return response;
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(PostNotFound.class)
+    public ErrorResponse postNotPoundO(PostNotFound e) {
+        ErrorResponse response = ErrorResponse.builder()
+                .code("404")
+                .message("잘못된 요청입니다.")
+                .build();
+
+        return response;
     }
 }
