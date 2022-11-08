@@ -240,8 +240,35 @@ class PostControllerTest {
         mockMvc.perform(delete("/posts/{postId}", 1L)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(postEdit)))
+                .andExpect(status().isNotFound())
+                .andDo(print());
+
+    }
+
+    @Test
+    @DisplayName("게시글 작성시 제목에 ''포함x")
+    void test11() throws Exception {
+        // given
+        PostCreate request = PostCreate.builder()
+                .title("''")
+                .content("내용입니다.")
+                .build();
+
+        String json = objectMapper.writeValueAsString(request);
+
+        // when
+        mockMvc.perform(get("/posts")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json)
+        )
                 .andExpect(status().isOk())
                 .andDo(print());
 
+        // then
+        assertEquals(1L, postRepository.count());
+
+        Post post = postRepository.findAll().get(0);
+        assertEquals("제목입니다.", post.getTitle());
+        assertEquals("내용입니다.", post.getContent());
     }
 }
