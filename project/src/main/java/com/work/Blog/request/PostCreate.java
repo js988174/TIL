@@ -1,6 +1,7 @@
 package com.work.Blog.request;
 
 import com.work.Blog.domain.Post;
+import com.work.Blog.exception.InvalidRequest;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,6 +31,12 @@ public class PostCreate {
                 .title(title)
                 .content(content)
                 .build();
+    }
+
+    public void validate() {
+        if (title.contains("")) {
+            throw new InvalidRequest();
+        }
     }
 
     // 빌더의 장점

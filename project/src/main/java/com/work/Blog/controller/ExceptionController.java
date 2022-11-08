@@ -6,6 +6,7 @@ import com.work.Blog.exception.PostNotFound;
 import com.work.Blog.response.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -42,7 +43,7 @@ public class ExceptionController {
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(PostNotFound.class)
-    public ErrorResponse Exception(Exception e) {
+    public ResponseEntity<ErrorResponse> Exception(Exception e) {
         int statusCode = e.statusCode();
 
         ErrorResponse response = ErrorResponse.builder()
@@ -50,6 +51,9 @@ public class ExceptionController {
                 .message("잘못된 요청입니다.")
                 .build();
 
-        return response;
+        ResponseEntity<ErrorResponse> errorResponse = ResponseEntity.status(statusCode)
+                .body(response);
+
+        return errorResponse;
     }
 }
