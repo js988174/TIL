@@ -51,4 +51,4 @@
 * [모던 자바 인 액션 6장-2](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-6%EC%9E%A5-%EC%8A%A4%ED%8A%B8%EB%A6%BC%EC%9C%BC%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%88%98%EC%A7%912)
 * [모던 자바 인 액션 7장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-7%EC%9E%A5-%EB%B3%91%EB%A0%AC-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%98%EB%A6%AC%EC%99%80-%EC%84%9C%EB%8A%A5)
 * [모던 자바 인 액션 8장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-8%EC%9E%A5-%EC%BB%AC%EB%A0%89%EC%85%98-API-%EA%B0%9C%EC%84%A0)
-
+* [모던 자바 인 액션 8장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-8%EC%9E%A5-%EC%BB%AC%EB%A0%89%EC%85%98-API-%EA%B0%9C%EC%84%A0)
