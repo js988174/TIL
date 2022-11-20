@@ -35,7 +35,7 @@ public class PostCreate {
 
     public void validate() {
         if (title.contains("")) {
-            throw new InvalidRequest();
+            throw new InvalidRequest("title", "");
         }
     }
 

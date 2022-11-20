@@ -2,6 +2,7 @@ package com.work.Blog.controller;
 
 
 import com.work.Blog.exception.Exception;
+import com.work.Blog.exception.InvalidRequest;
 import com.work.Blog.exception.PostNotFound;
 import com.work.Blog.response.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -47,9 +48,10 @@ public class ExceptionController {
         int statusCode = e.statusCode();
 
         ErrorResponse response = ErrorResponse.builder()
-                .code("404")
-                .message("잘못된 요청입니다.")
+                .code(String.valueOf(statusCode))
+                .message(e.getMessage())
                 .build();
+
 
         ResponseEntity<ErrorResponse> errorResponse = ResponseEntity.status(statusCode)
                 .body(response);
