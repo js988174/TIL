@@ -32,6 +32,7 @@
 
 ## ⚡ vue js
 * [vue.js](https://github.com/js988174/TIL/tree/main/vue.js)
+* [Vue 개발 관련 정리](https://rudtjs49.tistory.com/entry/Vue-%EA%B0%9C%EB%B0%9C-%EA%B4%80%EB%A0%A8-%EC%A0%95%EB%A6%AC)
 
 ## ⚡ 네트워크
 * [네트워크 강의 정리](https://github.com/js988174/TIL/tree/main/http)
