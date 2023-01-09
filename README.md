@@ -10,4 +10,7 @@
 
 * AnonymousAuthenticationFilter: 익명사용자 인증 처리 필터
 * http.sessionManagement: 세션 관리 기능
-* 
+  + maxSessionsPreventsLogin: 동시 로그인 차단
+  + invalidSessionUrl: 세션이 유효하지 않을 때 이동 할 페이지
+  + expiredUrl: 세션이 만료될 경우 이동 할 페이지
+
