@@ -7,3 +7,7 @@
 ## 기능
 * rememberMe: 저장 기능
 * RememberMeService에서 토큰 쿠키 추출 -> 존재하지 않으면 chain.doFilter , 존재하면 Decode Token에서 유무 판단
+
+* AnonymousAuthenticationFilter: 익명사용자 인증 처리 필터
+* http.sessionManagement: 세션 관리 기능
+* 
