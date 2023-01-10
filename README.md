@@ -14,3 +14,4 @@
   + invalidSessionUrl: 세션이 유효하지 않을 때 이동 할 페이지
   + expiredUrl: 세션이 만료될 경우 이동 할 페이지
 
+* authorizeRequest: 권한 설정
