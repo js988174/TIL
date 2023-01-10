@@ -15,3 +15,4 @@
   + expiredUrl: 세션이 만료될 경우 이동 할 페이지
 
 * authorizeRequest: 권한 설정
+* ExceptionTranslationFilter: 인증 예외 처리
