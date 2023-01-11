@@ -16,3 +16,12 @@
 
 * authorizeRequest: 권한 설정
 * ExceptionTranslationFilter: 인증 예외 처리
+
+* http.csrf: 위조 방지 필터(기본 활성화)
+
+## DelegatingFilterProxy
+* 서블릿 필터는 스프링에서 정의된 빈을 주입해서 사용할 수 없음
+* 특정한 이름을 가진 스프링 빈을 찾아 그 빈에게 요청을 위임
+  + springSecurityFilterChain 이름으로 생성된 빈을 ApplicationContext 에서 찾아 요청을 위임
+  + 보안처리 x
+
