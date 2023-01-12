@@ -25,3 +25,10 @@
   + springSecurityFilterChain 이름으로 생성된 빈을 ApplicationContext 에서 찾아 요청을 위임
   + 보안처리 x
 
+## Authentication 
+* 사용자의 인증 정보를 저장하는 토큰 개념
+  + principal: 사용자 아이디 혹은 User 객체를 저장
+  + credentials: 사용자 비밀번호
+  + authorities: 인증된 사용자의 권한 목록
+  + details: 인증 부가 정보
+  + Authenticated: 인증 여부
