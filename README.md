@@ -54,3 +54,7 @@
 * 인증 후
   * Session 에서 SecurityContext 꺼내어 SecurityContextHolder 에서 저장
   * SecurityContext 안에 Authentication 객체가 존재하면 계속 인증을 유지한다.
+
+* 인증 흐름
+  <img src='https://user-images.githubusercontent.com/76925402/212604830-29439607-2003-4b4a-af62-1d0e413c0f5e.png'> 
+
