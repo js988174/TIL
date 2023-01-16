@@ -40,5 +40,17 @@
 * SecurityContextHolder: SecurityContext 객체 저장 방식
   + MODE_THREALOCAL: 스레드당 객체를 할당
   + MODE_INHERITABLETHREADLOCAL: 메인 스레드와 자식 스레드에 관하여 동일한 SecurityContext를 유지
-  + MODE_GLOBAL: 응용 프로그램에 단 하나의 SecurityContext를 저장
+  + MODE_GLOBAL: 응용 프로그램에 단 하나의 SecurityContext 를 저장
 
+  
+* 익명 사용자
+  * 새로운 SecurityContext 객체를 생성하여 Holder 에 저장
+  * AnonymousAutenticationFilter 에서 Token 객체를 SeucrityContext에 저장
+
+* 인증 시
+  * 새로운 SecurityContext 객체를 생성하여 SecurityContextHolder 에 저장
+  * 인증 성공 후 SeucrityContext 에 UsernamePasswordAuthentication 객체를 SecurityContext에 저장
+
+* 인증 후
+  * Session 에서 SecurityContext 꺼내어 SecurityContextHolder 에서 저장
+  * SecurityContext 안에 Authentication 객체가 존재하면 계속 인증을 유지한다.

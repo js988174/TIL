@@ -116,6 +116,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                })
 //                .accessDeniedHandler(new AccessDeniedHandler() {
 //                    @Override
+
 //                    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
 //                        response.sendRedirect("/denied");
 //                    }
