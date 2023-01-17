@@ -58,3 +58,7 @@
 * 인증 흐름
   <img src='https://user-images.githubusercontent.com/76925402/212604830-29439607-2003-4b4a-af62-1d0e413c0f5e.png'> 
 
+
+## AuthenticationManager
+* 부모 ProviderManager 를 설정하여 AuthenticationProvider 를 계속 탐색 할 수 있다.
+* AuthenticationProvider 목록 중에서 인증 처리 요건에 맞는 AuthenticationProvider 를 찾아 인증처리를 위임한다.
