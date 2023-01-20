@@ -33,6 +33,14 @@
   + details: 인증 부가 정보
   + Authenticated: 인증 여부
 
+## AuthenticationManager
+* 부모 ProviderManager 를 설정하여 AuthenticationProvider 를 계속 탐색 할 수 있다.
+* AuthenticationProvider 목록 중에서 인증 처리 요건에 맞는 AuthenticationProvider 를 찾아 인증처리를 위임한다.
+
+## AuthenticationProvider
+
+
+
 ## SecurityContext
 * SecurityContext: Authentication 객체가 저장되는 보관소로 필요 시 언제든지 Authentication 객체를 꺼내어 쓸 수 있도록 제공되는 클래스
   + 인증이 완료되면 HttpSession에 저장되어 어플리케이션 전반에 걸쳐 전역적인 참조 가능
@@ -59,6 +67,3 @@
   <img src='https://user-images.githubusercontent.com/76925402/212604830-29439607-2003-4b4a-af62-1d0e413c0f5e.png'> 
 
 
-## AuthenticationManager
-* 부모 ProviderManager 를 설정하여 AuthenticationProvider 를 계속 탐색 할 수 있다.
-* AuthenticationProvider 목록 중에서 인증 처리 요건에 맞는 AuthenticationProvider 를 찾아 인증처리를 위임한다.
