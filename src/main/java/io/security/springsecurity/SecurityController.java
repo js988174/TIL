@@ -16,9 +16,9 @@ public class SecurityController {
     @GetMapping("/")
     public String index(HttpSession session) {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        SecurityContext context = (SecurityContext)session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
-        Authentication authentication1 = context.getAuthentication();
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        SecurityContext context = (SecurityContext)session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
+//        Authentication authentication1 = context.getAuthentication();
 
         return "home";
     }
