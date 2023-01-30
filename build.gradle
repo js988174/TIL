@@ -22,7 +22,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.27' // 추가
     runtimeOnly 'org.postgresql:postgresql' // 추가
-
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
 }
 
