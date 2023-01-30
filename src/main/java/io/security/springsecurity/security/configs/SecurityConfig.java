@@ -1,5 +1,6 @@
 package io.security.springsecurity.security.configs;
 
+import io.security.springsecurity.security.handler.CustomAuthenticationFailureHandler;
 import io.security.springsecurity.security.provider.CustomAuthenticationProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -28,9 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthenticationDetailsSource authenticationDetailsSource;
-
     @Autowired
     private AuthenticationSuccessHandler authenticationSuccessHandler;
+    @Autowired
+    private AuthenticationFailureHandler authenticationFailureHandler;
 
 
     @Override
@@ -66,6 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationDetailsSource(authenticationDetailsSource)
                 .defaultSuccessUrl("/")
                 .successHandler(authenticationSuccessHandler)
+                .failureHandler(authenticationFailureHandler)
                 .permitAll()
         ;
 
