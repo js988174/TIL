@@ -1,9 +1,11 @@
 package io.security.springsecurity.security.configs;
 
 import io.security.springsecurity.security.common.FormAuthenticationDetailsSource;
+import io.security.springsecurity.security.filter.AjaxLoginProcessingFilter;
 import io.security.springsecurity.security.handler.CustomAccessDeniedHandler;
 import io.security.springsecurity.security.handler.CustomAuthenticationFailureHandler;
 import io.security.springsecurity.security.provider.CustomAuthenticationProvider;
+import io.security.springsecurity.security.token.AjaxAuthenticationToken;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.reactive.PathRequest;
@@ -24,6 +26,7 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
@@ -48,6 +51,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AuthenticationProvider authenticationProvider() {
         return new CustomAuthenticationProvider();
+    }
+
+
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     @Override
@@ -76,10 +85,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling()
                 .accessDeniedHandler(accessDeniedHandler())
+                .and()
+                .addFilterBefore(ajaxLoginProcessingFilter(), UsernamePasswordAuthenticationFilter.class);
 
 
-
-        ;
     }
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
@@ -93,6 +102,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-
+    @Bean
+    public AjaxLoginProcessingFilter ajaxLoginProcessingFilter() throws Exception {
+        AjaxLoginProcessingFilter ajaxLoginProcessingFilter =  new AjaxLoginProcessingFilter();
+        ajaxLoginProcessingFilter.setAuthenticationManager(authenticationManagerBean());
+        return ajaxLoginProcessingFilter;
+    }
 
 }
