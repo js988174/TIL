@@ -1,6 +1,7 @@
 package com.restful.springBoot.user;
 
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(value = {"password", "ssn"})
+@JsonFilter("UserInfo")
 public class User {
 
     private Integer id;
