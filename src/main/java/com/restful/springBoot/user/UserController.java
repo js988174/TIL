@@ -10,6 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 public class UserController {
@@ -56,4 +57,11 @@ public class UserController {
             throw new UserNotFoundException(String.format("ID[%s] not found", id));
         }
     }
+
+//    @GetMapping(path = "/hello-world-internationalized")
+//    public String helloWorld(
+//            @RequestHeader(name = "Accept-Language", required = false)Locale locale) {
+//        return message.getMessage("",null, locale)
+//    }
+
 }
