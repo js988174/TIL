@@ -60,7 +60,9 @@ public class AdminController {
         return mappingJacksonValue;
     }
 
-    @GetMapping("/v1/users/{id}")
+//    @GetMapping("/v1/users/{id}")
+//    @GetMapping(value = "/users/{id}", params = "version=1")
+    @GetMapping(value = "/users/{id}", headers = "X-API-VERSION=1")
     public MappingJacksonValue oneUserV1(@PathVariable int id) {
         User user = service.findOne(id);
 
@@ -79,7 +81,8 @@ public class AdminController {
         return mappingJacksonValue;
     }
 
-    @GetMapping("/v2/users/{id}")
+//    @GetMapping("/v2/users/{id}")
+    @GetMapping(value = "/users/{id}", params = "version=2")
     public MappingJacksonValue oneUserV2(@PathVariable int id) {
         User user = service.findOne(id);
 
