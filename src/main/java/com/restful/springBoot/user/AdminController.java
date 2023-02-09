@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.restful.springBoot.user.User;
 import com.restful.springBoot.user.UserDaoService;
 import com.restful.springBoot.user.UserNotFoundException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
@@ -59,7 +60,48 @@ public class AdminController {
         return mappingJacksonValue;
     }
 
+    @GetMapping("/v1/users/{id}")
+    public MappingJacksonValue oneUserV1(@PathVariable int id) {
+        User user = service.findOne(id);
 
+        if (user == null) {
+            throw new UserNotFoundException(String.format("ID[%s] not found", id));
+        }
+
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
+                .filterOutAllExcept("id", "name", "joinDate", "ssn");
+
+        FilterProvider filterProvider = new SimpleFilterProvider().addFilter("UserInfo", filter);
+
+        MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(user);
+        mappingJacksonValue.setFilters(filterProvider);
+
+        return mappingJacksonValue;
+    }
+
+    @GetMapping("/v2/users/{id}")
+    public MappingJacksonValue oneUserV2(@PathVariable int id) {
+        User user = service.findOne(id);
+
+        if (user == null) {
+            throw new UserNotFoundException(String.format("ID[%s] not found", id));
+        }
+
+        // User -> User2
+        UserV2 userV2 = new UserV2();
+        BeanUtils.copyProperties(user, userV2);
+        userV2.setGrade("VIP");
+
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
+                .filterOutAllExcept("id", "name", "joinDate", "ssn");
+
+        FilterProvider filterProvider = new SimpleFilterProvider().addFilter("UserInfoV2", filter);
+
+        MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(user);
+        mappingJacksonValue.setFilters(filterProvider);
+
+        return mappingJacksonValue;
+    }
 
 
 }
