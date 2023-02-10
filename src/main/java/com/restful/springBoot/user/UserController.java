@@ -2,11 +2,14 @@ package com.restful.springBoot.user;
 
 import lombok.NoArgsConstructor;
 import org.apache.coyote.Response;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -27,14 +30,19 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public User oneUser(@PathVariable int id) {
+    public EntityModel<User> oneUser(@PathVariable int id) {
         User user = service.findOne(id);
 
         if (user == null) {
             throw new UserNotFoundException(String.format("ID[%s] not found", id));
         }
 
-        return user;
+        EntityModel<User> entityModel = EntityModel.of(user);
+        WebMvcLinkBuilder linkBuilder = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).allUserList());
+
+        entityModel.add(linkBuilder.withRel("all-users"));
+
+        return entityModel;
     }
 
     @PostMapping("/users")
