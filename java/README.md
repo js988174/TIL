@@ -210,4 +210,23 @@ class child extends parent {
 
 # 다형성
 * 객체지향개념에서 다형성이란 '여러 가지 형태를 가질 수 있는 능력'을 의미하며, 자바에서는 한 타입의 참조변수로 여러 타입의 객체를 참조할 수 있도록 한다.
-* 
+
+## 여러 종류의 객체를 배열로 다루기
+```
+Product p1 = new Tv();
+Product p2 = new Computer();
+Product p3 = nmew Audio();
+```
+* 이처럼 공통의 조상을 가진 서로 다른 종류의 객체를 배열로 묶어서  다를 수 있다.
+
+# 추상클래스
+* 추상클래스란? 비유하자면 미완성 설계도로 상속을 통해서 자손클래스에 의해서만 완성될 수 있다.
+* 추상메서드란? 선언부만 작성하고 구현부는 작성하지 않은 채로 남겨 둔 것이 추상메서드이다.
+```
+abstract class Player { // 추상클래스
+ abstract void playh(int pos); .. 추상메서드
+ abstract void stop(); 
+}
+```
+
+
