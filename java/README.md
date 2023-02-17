@@ -229,4 +229,32 @@ abstract class Player { // 추상클래스
 }
 ```
 
+```
+class cdPlayer extends Player {
+  void play(int currentPos) {
+   // 조상의 추상메서드를 구현 
+ }
+
+  void stop() {
+   // 조상의 추상메서드를 구현
+ }
+}
+```
+* cdPlayer 클래스를 만들고 Player를 상속받아 기능들을 완성시킬 수 있다.
+
+
+# 인터페이스 
+* 인터페이스란 일종의 추상 클래스이다. 인터페이스는 구현된 것은 아무것도 없고 밑그림만 그려져 있는 기본 설계도 라고 할 수 있다.
+
+``
+interface 인터페이스이름 {
+  public static final 상수이름 = 값;
+  public abstract 메서드이름(매개변수목록);
+}
+```
+* 인터페이스는 제약사항이 있다.
+ + 모든 멤버변수는 public static final 이어야 하며, 이를 생략할 수 있다.
+ + 모든 메서드는 public abstract 이어야 하며, 이를 생략할 수 있다. 
+* 인터페이스는 다중 상속이 가능하다.
+
 
