@@ -12,7 +12,6 @@ import javax.validation.Valid;
 import java.net.URI;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Controller
 @RequestMapping(value = "/api/events", produces = MediaTypes.HAL_JSON_VALUE)
@@ -20,8 +19,11 @@ public class EventController {
 
     private final EventRepository eventRepository;
 
-    public EventController(EventRepository eventRepository) {
+    private final EventValidator eventValidator;
+
+    public EventController(EventRepository eventRepository, EventValidator eventValidator) {
         this.eventRepository = eventRepository;
+        this.eventValidator = eventValidator;
     }
 
     @GetMapping("/api/events")
@@ -29,6 +31,12 @@ public class EventController {
         if (errors.hasErrors()) {
             return ResponseEntity.badRequest().build();
         }
+
+        eventValidator.validate(event, errors);
+        if (errors.hasErrors()) {
+            return ResponseEntity.badRequest().build();
+        }
+
         Event newEvent = this.eventRepository.save(event);
         URI createUrl = linkTo(EventController.class).slash(newEvent.getId()).toUri();
         return ResponseEntity.created(createUrl).build();
