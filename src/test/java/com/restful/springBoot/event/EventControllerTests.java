@@ -64,4 +64,14 @@ class EventControllerTests {
                 .andExpect(status().isBadRequest());
     }
 
+    @Test
+    public void createEvent_Bad_Request() throws Exception {
+        Event event = Event.builder().build();
+
+        this.mockMvc.perform(post("/api/events")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(this.objectMapper.writeValueAsString(event)))
+                .andExpect(status().isBadRequest());
+    }
+
 }
