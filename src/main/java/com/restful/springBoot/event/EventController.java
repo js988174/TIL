@@ -1,5 +1,6 @@
 package com.restful.springBoot.event;
 
+import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,12 @@ public class EventController {
 
         Event newEvent = this.eventRepository.save(event);
         URI createUrl = linkTo(EventController.class).slash(newEvent.getId()).toUri();
-        return ResponseEntity.created(createUrl).build();
+
+        EntityModel eventResource = EntityModel.of(newEvent);
+        eventResource.add(linkTo(EventController.class).slash(newEvent.getId()).withSelfRel());
+        eventResource.add(linkTo(EventController.class).withRel("query-events"));
+
+
+        return ResponseEntity.created(createUrl).body(eventResource);
     }
 }
