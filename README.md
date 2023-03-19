@@ -2,7 +2,7 @@ _ 📌(TIL) Today I Learned📌_
 ## 하루 공부한 내용을 기록합니다.
 
 ## 🌏 Project
-
+* [기능 테스트 프로젝트](https://github.com/js988174/Open-API)
 
 ## ⚡ Spring
 * [스프링 기본 소스 코드](https://github.com/js988174/TIL/tree/main/core)
