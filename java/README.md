@@ -293,8 +293,9 @@ interface 인터페이스이름 {
 | ---  | ---  | ---  | ---  |
 | ArrayList  | 빠르다   | 느리다   | 비효율적인 메모리 사용 |
 | LinkedList | 느리다   | 빠르다   | 데이터가 많으면 접근성 떨어짐 |
-
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+##
+|제목|내용|설명|
+|------|---|---|
+|테스트1|테스트2|테스트3|
+|테스트1|테스트2|테스트3|
+|테스트1|테스트2|테스트3|
