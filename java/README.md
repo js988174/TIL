@@ -293,8 +293,3 @@ interface 인터페이스이름 {
 | :---:  | :---:  | :---:  | :---:  |
 | ArrayList  | 빠르다   | 느리다   | 비효율적인 메모리 사용       |
 | LinkedList | 느리다   | 빠르다   | 데이터가 많으면 접근성 떨어짐 |
-
-| Command | Description |
-| --- | --- |
-| git status | List all new or modified files |
-| git diff | Show file differences that haven't been staged |
