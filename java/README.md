@@ -341,3 +341,10 @@ enum 열거형이름 { 상수명1, 상수명2, ...}
 * 열거형 상수간의 비교는 == 를 사용할 수 있다.
 * 하지만 비교연산자는 불가능하고 비교할려면 compareTo()를 이용해야한다.
 
+## 열거형 이해
+ ```
+ static final Card CLOVER = new Card("CLOVER");
+ static final Card HEART = new Card("HEART");
+ static final Card DIAMOND = new Card("DIAMOND");
+ ```
+ * 상수 하나하나가 Card 객체이다.
