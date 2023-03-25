@@ -324,3 +324,20 @@ class box<T> { // 제네릭 타입 T
 static <T> void sort(....) 
 ```
 
+# 열거형
+* 열거형은 서로 관련된 상수를 선언하기 위한 것으로 여러 상수를 정의할 때 사용하면 유용하다.
+```
+class Card {
+ enum Kind {CLOVER, HEART, DIAMOND, SPADE} // 열거형 Kind를 정의
+ 
+ final Kind kind; // 타입이 int가 아닌 KINdlek.
+}
+```
+
+## 열거형 정의 하는 방법
+```
+enum 열거형이름 { 상수명1, 상수명2, ...}
+```
+* 열거형 상수간의 비교는 == 를 사용할 수 있다.
+* 하지만 비교연산자는 불가능하고 비교할려면 compareTo()를 이용해야한다.
+
