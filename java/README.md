@@ -373,6 +373,26 @@ enum 열거형이름 { 상수명1, 상수명2, ...}
  
 
 ## 쓰레드 구현 방법
+* Thread 클래스를 상속
+```
+class MyThread extends Thread {
+   public void run() {
+      // 작업 내용
+   }
+}
+```
 
- 
+* Runnable 인터페이스를 구현
+```
+class MyThread implements Runnable {
+   public void run() {
+      // 작업 내용
+   }
+}
+```
+
+* start()를 호출하면 자기 차례떄 실행이 되고, 한 번 실행이 종료된 쓰레드는 다시 실행할 수 없다.
+* 실행 중인 사용자 쓰레드가 하나도 없을 때 프로그램은 종료된다.
+
+
  
