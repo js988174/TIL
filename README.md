@@ -58,3 +58,4 @@ _ 📌(TIL) Today I Learned📌_
 * [모던 자바 인 액션 12장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-12%EC%9E%A5-%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%82%A0%EC%A7%9C%EC%99%80-%EC%8B%9C%EA%B0%84-API)
 * [모던 자바 인 액션 13장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-13%EC%9E%A5-%EB%94%94%ED%8F%B4%ED%8A%B8-%EB%A9%94%EC%84%9C%EB%93%9C)
 * [모던 자바 인 액션 14장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-14%EC%9E%A5-%EC%9E%90%EB%B0%94-%EB%AA%A8%EB%93%88-%EC%8B%9C%EC%8A%A4%ED%85%9C)
+* [클린 코드](https://rudtjs49.tistory.com/entry/%ED%81%B4%EB%A6%B0-%EC%BD%94%EB%93%9C-%EC%9A%94%EC%95%BD-%EB%B0%8F-%EC%A0%95%EB%A6%AC)
