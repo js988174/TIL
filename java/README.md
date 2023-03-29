@@ -436,3 +436,35 @@ public synchronized void calcSum() {
 }
 ```
 
+## 함수형 인터페이스
+* 함수형 인터페이스는 추상 메서드가 오직 하나인 인터페이스를 의미한다.
+```
+@FunctionalInterface
+interface MyFunction {
+	public abstract int max(int a, int b);
+   }
+```
+
+## 함수형 인터페이스 구현
+* 익명 클래스 클래스의 선언, 객체 생성이 동시에 이루어진다.
+```
+MyFunction f = new MyFunction(){
+	public int max(int a, int b){
+    	return a > b ? a : b;
+    }
+}
+```
+이런 복잡한 식도
+```
+List<String> list = Arrays.asList("abc", "aaa", "bbb", "ddd", "aaa");
+Collections.sort(list, new Comparator<String>(){
+	public int compare(String s1, String s2){
+    	return s2.compareTo(s1);
+    }
+});
+```
+람다식을 이용하면 아래처럼 간편하게 바꿀 수 있다.
+```
+List<String> list = Arrays.asList("abc", "aaa", "bbb", "ddd", "aaa");
+Collections.sort(list, (s1, s2) -> s2.compareTo(s1));
+```
