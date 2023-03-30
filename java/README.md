@@ -468,3 +468,9 @@ Collections.sort(list, new Comparator<String>(){
 List<String> list = Arrays.asList("abc", "aaa", "bbb", "ddd", "aaa");
 Collections.sort(list, (s1, s2) -> s2.compareTo(s1));
 ```
+
+# 입출력
+* 입출력이란? input과 ouput으로 입력과 출력 컴퓨터 내부의 데이터를 주고 받는 것을 의미한다.
+* 스트림? 두 대상을 연결하고 데이터를 전송할 수 있는 무언가가 필요한데 이것을 스트림이라고 한다.
+
+> 스트림은 데이터를 운반하는데 사용되는 연결통로
