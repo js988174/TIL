@@ -549,8 +549,10 @@ public class Ex15_6 {
 ```	
 					   
 BufferedReader/BufferedWriter
-    * 버퍼를 이용해서 입출력의 효율을 높일 수 있도록 해주는 역할
-    * 문자 기반
+					   
+* 버퍼를 이용해서 입출력의 효율을 높일 수 있도록 해주는 역할
+* 문자 기반
+					   
 ```
 public class Ex15_11 {
 	public static void main(String[] args) {
