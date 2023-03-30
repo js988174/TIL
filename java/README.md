@@ -474,3 +474,111 @@ Collections.sort(list, (s1, s2) -> s2.compareTo(s1));
 * 스트림? 두 대상을 연결하고 데이터를 전송할 수 있는 무언가가 필요한데 이것을 스트림이라고 한다.
 
 > 스트림은 데이터를 운반하는데 사용되는 연결통로
+>> 큐와 같은 FIFO 구조로 되어 있다.
+	
+
+## 보조 스트림
+* 보조 스트림은 데이터를 입출력할 수 있는 기능은 없지만, 스트림의 기능을 향상시키거나 새로운 기능을 추가할 수 있다.
+	
+```
+//먼저 기반스트림을 생성한다.
+FileInputStream fis = new FileInputStream("test.txt");
+
+//기반스트림을 이용해서 보조스트림을 생성한다.
+BufferedInputStream bis = new BufferedInputStream(fis);
+	
+//보조 스트림인 BufferedInputStream으로부터 데이터를 읽는다.
+bis.read();	
+	
+```
+	
+## 문자기반 스트림 - Reader, Writer
+* 2 byte를 처리 하기 위한 문자 기반 스트림이다. 
+* inputStream을 Reader로 OutputStream을 Writer로 바꾸면 된다.	
+
+	
+## 자주 쓰이는 스트림
+	
+FileInputStream/FileOutputStream
+* 파일에 입출력을 하기 위한 스트림	
+	
+```
+public class FileCopy {
+	public static void main(String[] args) throws IOException {
+		// FileInputStream, FileOutputStream 생성
+		// args[0]파일을 읽어서 args[1]에 저장
+		FileInputStream fis = new FileInputStream(args[0]);
+		FileOutputStream fos = new FileOutputStream(args[1]);
+		
+		int data = 0;
+		// fis의 내용을 읽어서 fos로 저장
+		while((data=fis.read())!=-1) {
+			fos.write(data);
+		}
+		fis.close();
+		fos.close();
+	}
+}	
+```	
+	
+BufferedInputStream/BufferedOutputStream
+
+    * 스트림의 입출력 효율을 높이는 용도, 대부분의 입출력 작업에 사용
+    * 데이터를 버퍼크기만큼 가져와 저장, 입출력	
+	
+```
+public class Ex15_6 {
+	public static void main(String[] args) {
+		// 버퍼를 이용해 123456789가 담긴 123.txt를 생성
+		try {
+			// 기반스트림(보조스트림)
+			FileOutputStream fos = new FileOutputStream("100.txt");
+			BufferedOutputStream bos = new BufferedOutputStream(fos,5);
+			
+			for(int i='1'; i<'9'; i++) {
+				bos.write(i);
+			}
+          		// 버퍼에 남아있는 모든 데이터를 출력소스에 출력
+            		// 보조스트림의 close()만 호출하면 됨
+			bos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}	
+```	
+					   
+BufferedReader/BufferedWriter
+    * 버퍼를 이용해서 입출력의 효율을 높일 수 있도록 해주는 역할
+    * 문자 기반
+```
+public class Ex15_11 {
+	public static void main(String[] args) {
+		// 버퍼를 이용해 파일을 읽어 들임
+		try {
+			FileReader fr = new FileReader("Ex15_11.java");
+			BufferedReader br = new BufferedReader(fr);
+			
+			String line = "";
+			for(int i=1; (line = br.readLine())!=null; i++) {
+				if(line.indexOf(';')!=-1)
+					System.out.println(i+":"+line);
+			}
+			
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}					   
+```
+					   
+					   
+## 직렬화
+* 직렬화란 객체를 데이터 스트림으로 만드는 것을 뜻한다.
+* 객체에 저장된 데이터를 스트림에 쓰기위해 연속적인(serial) 데이터로 변환하는 것을 말한다.
+* 직렬화가 가능한 클래스를 만드는 방법은 Serializable 인터페이스를 원하는 클래스에 구현(선언)하면 된다.
+					   
+					   
+					   
+					   
