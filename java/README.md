@@ -522,9 +522,9 @@ public class FileCopy {
 ```	
 	
 BufferedInputStream/BufferedOutputStream
-
-    * 스트림의 입출력 효율을 높이는 용도, 대부분의 입출력 작업에 사용
-    * 데이터를 버퍼크기만큼 가져와 저장, 입출력	
+	
+ * 스트림의 입출력 효율을 높이는 용도, 대부분의 입출력 작업에 사용
+ * 데이터를 버퍼크기만큼 가져와 저장, 입출력	
 	
 ```
 public class Ex15_6 {
