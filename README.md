@@ -3,6 +3,7 @@ _ 📌(TIL) Today I Learned📌_
 
 ## 🌏 Project
 * [기능 테스트 프로젝트](https://github.com/js988174/Open-API)
+* [Dessert 39](https://github.com/js988174/AndroidProjects/tree/main/Dessert39)
 
 ## ⚡ Spring
 * [스프링 기본 소스 코드](https://github.com/js988174/TIL/tree/main/core)
