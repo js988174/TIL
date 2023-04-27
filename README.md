@@ -14,8 +14,8 @@ _ 📌(TIL) Today I Learned📌_
 * [스프링 기본 - 의존관계 자동 주입](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84-%EC%9E%90%EB%8F%99-%EC%A3%BC%EC%9E%85)
 * [스프링 기본 - 빈 생명주기 콜백](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8-%EB%B9%88-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0-%EC%BD%9C%EB%B0%B1)
 * [스프링 기본 - 빈 스코프](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8-%EB%B9%88-%EC%8A%A4%EC%BD%94%ED%94%84)
-* [토비의 스프링 1장](https://rudtjs49.tistory.com/entry/%ED%86%A0%EB%B9%84%EC%9D%98-%EC%8A%A4%ED%94%84%EB%A7%81-1%EC%9E%A5-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84)
-* [토비의 스프링 2장 - ](https://rudtjs49.tistory.com/entry/%ED%86%A0%EB%B9%84%EC%9D%98-%EC%8A%A4%ED%94%84%EB%A7%81-2%EC%9E%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8)
+* [토비의 스프링 1장 - 오브젝트와 의존관계](https://rudtjs49.tistory.com/entry/%ED%86%A0%EB%B9%84%EC%9D%98-%EC%8A%A4%ED%94%84%EB%A7%81-1%EC%9E%A5-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84)
+* [토비의 스프링 2장 - 테스트](https://rudtjs49.tistory.com/entry/%ED%86%A0%EB%B9%84%EC%9D%98-%EC%8A%A4%ED%94%84%EB%A7%81-2%EC%9E%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8)
 * [스프링 시큐리티](https://github.com/js988174/TIL/tree/main/SpringSecurity)
 
 
