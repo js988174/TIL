@@ -14,7 +14,9 @@ _ 📌(TIL) Today I Learned📌_
 * [스프링 기본 - 의존관계 자동 주입](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84-%EC%9E%90%EB%8F%99-%EC%A3%BC%EC%9E%85)
 * [스프링 기본 - 빈 생명주기 콜백](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8-%EB%B9%88-%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0-%EC%BD%9C%EB%B0%B1)
 * [스프링 기본 - 빈 스코프](https://rudtjs49.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8-%EB%B9%88-%EC%8A%A4%EC%BD%94%ED%94%84)
-* [토비의 스프링 1장](https://rudtjs49.tistory.com/entry/%ED%86%A0%EB%B9%84%EC%9D%98-%EC%8A%A4%ED%94%84%EB%A7%81-1%EC%9E%A5-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84)
+* [토비의 스프링 1장 - 오브젝트와 의존관계](https://rudtjs49.tistory.com/entry/%ED%86%A0%EB%B9%84%EC%9D%98-%EC%8A%A4%ED%94%84%EB%A7%81-1%EC%9E%A5-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84)
+* [토비의 스프링 2장 - 테스트](https://rudtjs49.tistory.com/entry/%ED%86%A0%EB%B9%84%EC%9D%98-%EC%8A%A4%ED%94%84%EB%A7%81-2%EC%9E%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8)
+* [토비의 스프링 3장 - 테스트](https://rudtjs49.tistory.com/entry/%ED%86%A0%EB%B9%84%EC%9D%98-%EC%8A%A4%ED%94%84%EB%A7%81-2%EC%9E%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8)
 * [스프링 시큐리티](https://github.com/js988174/TIL/tree/main/SpringSecurity)
 
 
@@ -23,6 +25,7 @@ _ 📌(TIL) Today I Learned📌_
 * [학교에서 알려주지 않는 17가지 실무 개발 기술](https://rudtjs49.tistory.com/entry/%ED%95%99%EA%B5%90%EC%97%90%EC%84%9C-%EC%95%8C%EB%A0%A4%EC%A3%BC%EC%A7%80-%EC%95%8A%EB%8A%94-17%EA%B0%80%EC%A7%80-%EC%8B%A4%EB%AC%B4-%EA%B0%9C%EB%B0%9C-%EA%B8%B0%EC%88%A0-%EC%B1%85-%EB%A6%AC%EB%B7%B0) 
 * [그림으로 공부하는 IT 인프라 구조](https://rudtjs49.tistory.com/entry/%EA%B7%B8%EB%A6%BC%EC%9C%BC%EB%A1%9C-%EA%B3%B5%EB%B6%80%ED%95%98%EB%8A%94-IT-%EC%9D%B8%ED%94%84%EB%9D%BC-%EA%B5%AC%EC%A1%B0-%EC%B1%85-%EB%A6%AC%EB%B7%B0)
 * [클린 코드](https://rudtjs49.tistory.com/entry/%ED%81%B4%EB%A6%B0-%EC%BD%94%EB%93%9C-%EC%9A%94%EC%95%BD-%EB%B0%8F-%EC%A0%95%EB%A6%AC)
+
 
 ## 📒 JPA
 * [JPA 기본 소스코드](https://github.com/js988174/TIL/tree/main/jpa)
@@ -61,5 +64,11 @@ _ 📌(TIL) Today I Learned📌_
 * [모던 자바 인 액션 12장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-12%EC%9E%A5-%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%82%A0%EC%A7%9C%EC%99%80-%EC%8B%9C%EA%B0%84-API)
 * [모던 자바 인 액션 13장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-13%EC%9E%A5-%EB%94%94%ED%8F%B4%ED%8A%B8-%EB%A9%94%EC%84%9C%EB%93%9C)
 * [모던 자바 인 액션 14장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-14%EC%9E%A5-%EC%9E%90%EB%B0%94-%EB%AA%A8%EB%93%88-%EC%8B%9C%EC%8A%A4%ED%85%9C)
+
+
+## 면접 정리
+* [면접 내용 정리](https://rudtjs49.tistory.com/entry/%EB%A9%B4%EC%A0%91-%EC%A7%88%EB%AC%B8-%EC%A0%95%EB%A6%AC)
+
+## 쿠버네티스/ 도커
 
 
