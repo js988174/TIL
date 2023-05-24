@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AWS
 
 # 원티드 AWS 프리온보딩 정리
@@ -25,3 +26,6 @@
 
 
 # S3 
+=======
+# AWS
+>>>>>>> parent of 5de2c0e (git test)
