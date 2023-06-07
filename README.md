@@ -67,6 +67,7 @@ _ 📌(TIL) Today I Learned📌_
 * [모던 자바 인 액션 14장](https://rudtjs49.tistory.com/entry/%EB%AA%A8%EB%8D%98-%EC%9E%90%EB%B0%94-%EC%9D%B8-%EC%95%A1%EC%85%98-14%EC%9E%A5-%EC%9E%90%EB%B0%94-%EB%AA%A8%EB%93%88-%EC%8B%9C%EC%8A%A4%ED%85%9C)
 
 ## ⚡ MySQL
+* [RealMysql - 아키텍처]()
 
 ## 면접 정리
 * [면접 내용 정리](https://rudtjs49.tistory.com/entry/%EB%A9%B4%EC%A0%91-%EC%A7%88%EB%AC%B8-%EC%A0%95%EB%A6%AC)
